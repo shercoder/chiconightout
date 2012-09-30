@@ -1,0 +1,10 @@
+<resources>
+
+    <string name="app_name">ChicoNightOut</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_bar_list_view">BarListView</string>
+	<string name="bar_icon">The Icon That matches the bar name</string>
+	<string name="drinkList">DrinkListView</string>
+	
+</resources>
