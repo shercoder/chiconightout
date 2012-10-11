@@ -11,7 +11,6 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
-import android.database.SQLException;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -35,7 +34,7 @@ public class BarListView extends Activity {
 	        "Maltese",
 	        "Panamas",
 	        "Rileys",
-	        "The Graduate",
+	        "The Graduate", 
 	        "Town Lounge",
 	        "University Bar"
 	    };

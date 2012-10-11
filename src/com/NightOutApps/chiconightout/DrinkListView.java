@@ -39,7 +39,7 @@ public class DrinkListView extends ListActivity {
 	                myDbHelper.openDataBase();
 	            }
 	            catch(SQLException sqle){
-	                throw sqle;
+	                throw sqle; 
 	            }
 	            //there are 2 bar ids as of now. As we make the database bigger we can setup querys based on what is selected.
 	            String barStr = "Bar_id = " + bar;
@@ -51,7 +51,7 @@ public class DrinkListView extends ListActivity {
 	            @param from is the column names
 	            @param to is the layout ids that the fields will be put in. 
 	            */
-	            SimpleCursorAdapter myAdapter = new SimpleCursorAdapter(this, R.layout.row, c, colsfrom, to);
+	            SimpleCursorAdapter myAdapter = new SimpleCursorAdapter(this, R.layout.drinkrow, c, colsfrom, to);
 	            setListAdapter(myAdapter);
 	            
 	            myDbHelper.close();
