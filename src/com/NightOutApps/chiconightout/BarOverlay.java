@@ -10,9 +10,9 @@ import android.graphics.drawable.Drawable;
 import com.google.android.maps.ItemizedOverlay;
 import com.google.android.maps.OverlayItem;
 
-public class BarOverlay extends ItemizedOverlay<OverlayItem> {
+public class BarOverlay extends ItemizedOverlay<BarItem> {
 	
-	private ArrayList<OverlayItem> bOverlay = new ArrayList<OverlayItem>();
+	private ArrayList<BarItem> bOverlay = new ArrayList<BarItem>();
 	private Context contx;
 	
 	public BarOverlay(Drawable defaultMarker, Context cont) {
@@ -21,7 +21,7 @@ public class BarOverlay extends ItemizedOverlay<OverlayItem> {
 	}
 	
 	@Override
-	protected OverlayItem createItem(int i) {
+	protected BarItem createItem(int i) {
 		return bOverlay.get(i);
 	}
 	@Override
@@ -30,11 +30,12 @@ public class BarOverlay extends ItemizedOverlay<OverlayItem> {
 		return bOverlay.size();
 	}
 	
-	public void addOverlay(OverlayItem overlay, Drawable marker) {
-		overlay.setMarker(boundCenterBottom(marker));
+	public void addOverlay(BarItem overlay/*, Drawable marker*/) {
+		//overlay.setMarker(boundCenterBottom(marker));
 		bOverlay.add(overlay);
 		populate();
 	}
+	
 	@Override
 	protected boolean onTap(int index) {
 		OverlayItem item = bOverlay.get(index);

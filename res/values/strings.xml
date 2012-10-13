@@ -6,5 +6,6 @@
     <string name="title_activity_bar_list_view">BarListView</string>
 	<string name="bar_icon">The Icon That matches the bar name</string>
 	<string name="drinkList">DrinkListView</string>
-	
+	<string name="barList">BarListView</string>
+	<string name="description">BarListViewbutton</string>
 </resources>

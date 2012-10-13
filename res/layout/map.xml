@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/frame"
     android:orientation="vertical"
@@ -11,5 +11,16 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:apiKey = "0xR1g8qRRLoUp8-8gd7050zKWtMQCMDDHhizisw"
-        android:clickable="true" />
-    </LinearLayout>
+        android:clickable="true">
+    </com.google.android.maps.MapView>
+    <ImageButton 
+        android:id="@+id/barlistbutton"
+        android:layout_width = "80dp"
+        android:layout_height = "80dp"
+        android:padding = "10dp"
+        android:src = "@drawable/barlisticon"
+		android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:contentDescription="@string/description">
+    </ImageButton>
+    </RelativeLayout>
