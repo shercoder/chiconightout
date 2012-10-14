@@ -64,22 +64,22 @@ public class CNOMapView extends MapActivity implements OnClickListener{
 		GeoPoint ubarPoint = new GeoPoint(39730858,-121839387); //39730685, -121839423
 		
 		
-		Drawable bansheeIcon = this.getResources().getDrawable(R.drawable.banshee_icontest);
-		Drawable beachIcon = this.getResources().getDrawable(R.drawable.beach_icontest);
-		Drawable bellasIcon = this.getResources().getDrawable(R.drawable.bellas_icontest);
-		Drawable crazyIcon = this.getResources().getDrawable(R.drawable.crazy_horse_icontest);
-		Drawable downIcon = this.getResources().getDrawable(R.drawable.down_lo_icontest);
-		Drawable duffysIcon = this.getResources().getDrawable(R.drawable.duffys_icontest);
-		Drawable joesIcon = this.getResources().getDrawable(R.drawable.joes_icontest);
-		Drawable lasallesIcon = this.getResources().getDrawable(R.drawable.lasalles_icontest);
-		Drawable lostIcon = this.getResources().getDrawable(R.drawable.lost_on_main_icontest);
-		Drawable bearIcon = this.getResources().getDrawable(R.drawable.madison_bear_icontest);
-		Drawable malteseIcon = this.getResources().getDrawable(R.drawable.maltese_icontest);
-		Drawable panamasIcon = this.getResources().getDrawable(R.drawable.panamas_icontest);
-		Drawable rileysIcon = this.getResources().getDrawable(R.drawable.rileys_icontest);
-		Drawable gradIcon = this.getResources().getDrawable(R.drawable.the_grad_icontest);
-		Drawable townIcon = this.getResources().getDrawable(R.drawable.town_lounge_icontest);
-		Drawable ubarIcon = this.getResources().getDrawable(R.drawable.u_bar_icontest);
+		Drawable bansheeIcon = this.getResources().getDrawable(R.drawable.banshee_icon_trans);
+		Drawable beachIcon = this.getResources().getDrawable(R.drawable.beach_icon_trans);
+		Drawable bellasIcon = this.getResources().getDrawable(R.drawable.bellas_icon_trans);
+		Drawable crazyIcon = this.getResources().getDrawable(R.drawable.crazy_horse_icon_trans);
+		Drawable downIcon = this.getResources().getDrawable(R.drawable.down_lo_icon_trans);
+		Drawable duffysIcon = this.getResources().getDrawable(R.drawable.duffys_icon_trans);
+		Drawable joesIcon = this.getResources().getDrawable(R.drawable.joes_icon_trans);
+		Drawable lasallesIcon = this.getResources().getDrawable(R.drawable.lasalles_icon_trans);
+		Drawable lostIcon = this.getResources().getDrawable(R.drawable.lost_on_main_icon_trans);
+		Drawable bearIcon = this.getResources().getDrawable(R.drawable.madison_bear_icon_trans);
+		Drawable malteseIcon = this.getResources().getDrawable(R.drawable.maltese_icon_trans);
+		Drawable panamasIcon = this.getResources().getDrawable(R.drawable.panamas_icon_trans);
+		Drawable rileysIcon = this.getResources().getDrawable(R.drawable.rileys_icon_trans);
+		Drawable gradIcon = this.getResources().getDrawable(R.drawable.the_grad_icon_trans);
+		Drawable townIcon = this.getResources().getDrawable(R.drawable.town_lounge_icon_trans);
+		Drawable ubarIcon = this.getResources().getDrawable(R.drawable.u_bar_icon_trans);
 		Drawable cnoIco = this.getResources().getDrawable(R.drawable.ic_launcher);
 		
 		Rect bansheeR = new Rect(-bansheeIcon.getIntrinsicWidth()/2, -bansheeIcon.getIntrinsicHeight(), bansheeIcon.getIntrinsicWidth()/2, 0);
