@@ -24,6 +24,7 @@ public class BarOverlay extends ItemizedOverlay<BarItem> {
 	protected BarItem createItem(int i) {
 		return bOverlay.get(i);
 	}
+	
 	@Override
 	public int size() {
 		// TODO Auto-generated method stub

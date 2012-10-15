@@ -6,6 +6,7 @@ import java.util.Calendar;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Rect;
+import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
@@ -43,9 +44,7 @@ public class CNOMapView extends MapActivity implements OnClickListener{
 		initMapView();
 		initMyLocation();
 		initDatabase();
-	
 
-		
 		GeoPoint bansheePoint = new GeoPoint(39730006,-121841087); //39729912,-121841041
 		GeoPoint beachPoint = new GeoPoint(39730693,-121839199); //39730685,-121839423
 		GeoPoint bellasPoint = new GeoPoint(39729984,-121841755);
@@ -141,6 +140,7 @@ public class CNOMapView extends MapActivity implements OnClickListener{
 	protected boolean isRouteDisplayed() {
 		return false;
 	}
+	
 	private void initMapView() {
 		map = (MapView) findViewById(R.id.map);
 		control = map.getController();
@@ -148,14 +148,15 @@ public class CNOMapView extends MapActivity implements OnClickListener{
 		map.setSatellite(false);
 		map.invalidate();
 	}
+	
 	private void initMyLocation() {
 		
 		final MyLocationOverlay overlay = new MyLocationOverlay(this, map);
 		overlay.enableMyLocation();
 		overlay.runOnFirstFix(new Runnable() {
 			public void run() {
-				control.setZoom(17);
-				control.animateTo(centerP);
+				control.setZoom(18);
+				control.setCenter(centerP);
 			}
 		});
 		map.getOverlays().add(overlay);
@@ -171,7 +172,7 @@ public class CNOMapView extends MapActivity implements OnClickListener{
             throw new Error("Unable to create database");
         }
 	}
-	@Override
+	
 	public void onClick(View v) {
 		switch(v.getId()) {
 		
