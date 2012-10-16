@@ -99,21 +99,21 @@ public class CNOMapView extends MapActivity implements OnClickListener{
 		Rect ubarR = new Rect(-ubarIcon.getIntrinsicWidth()/2, -ubarIcon.getIntrinsicHeight(), ubarIcon.getIntrinsicWidth()/2, 0);
 		
 		BarItem overlaybanshee = new BarItem(bansheePoint, "Banshee", "I'm at Banshee!", bansheeIcon, bansheeR);
-		BarItem overlaybeach = new BarItem(beachPoint, "Beach", "I'm in Mexico City!", beachIcon, beachR);
-		BarItem overlaybellas = new BarItem(bellasPoint, "Bellas", "I'm in Mexico City!", bellasIcon, bellasR);
-		BarItem overlaycrazy = new BarItem(crazyPoint, "Crazy Horse", "I'm in Mexico City!", crazyIcon, crazyR);
-		BarItem overlaydown = new BarItem(downPoint, "Down Lo", "I'm in Mexico City!", downIcon, downR);
-		BarItem overlayduffys = new BarItem(duffysPoint, "Duffys", "I'm in Mexico City!", duffysIcon, duffysR);
-		BarItem overlayjoes = new BarItem(joesPoint, "Joes", "I'm in Mexico City!", joesIcon, joesR);
-		BarItem overlaylasalles = new BarItem(lasallesPoint, "Lasalles", "I'm in Mexico City!", lasallesIcon, lasallesR);
-		BarItem overlaylost = new BarItem(lostPoint, "Lost On Main", "I'm in Mexico City!", lostIcon, lostR);
-		BarItem overlaybear = new BarItem(bearPoint, "Madison Bear Garden", "I'm in Mexico City!", bearIcon, bearR);
-		BarItem overlaymaltese = new BarItem(maltesePoint, "Maltese", "I'm in Mexico City!", malteseIcon, malteseR);
-		BarItem overlaypanamas = new BarItem(panamasPoint, "Panamas", "I'm in Mexico City!", panamasIcon, panamasR);
-		BarItem overlayrileys = new BarItem(rileysPoint, "Rileys", "I'm in Mexico City!", rileysIcon, rileysR);
-		BarItem overlaygrad = new BarItem(gradPoint, "The Grad", "I'm in Mexico City!", gradIcon, gradR);
-		BarItem overlaytown = new BarItem(townPoint, "Town Lounge", "I'm in Mexico City!", townIcon, townR);
-		BarItem overlayubar = new BarItem(ubarPoint, "University Bar", "I'm in Mexico City!", ubarIcon, ubarR);
+		BarItem overlaybeach = new BarItem(beachPoint, "Beach", "I'm at The Beach!", beachIcon, beachR);
+		BarItem overlaybellas = new BarItem(bellasPoint, "Bellas", "I'm at Bellas", bellasIcon, bellasR);
+		BarItem overlaycrazy = new BarItem(crazyPoint, "Crazy Horse", "I'm at The Crazy Horse!", crazyIcon, crazyR);
+		BarItem overlaydown = new BarItem(downPoint, "Down Lo", "I'm at the DownLo!", downIcon, downR);
+		BarItem overlayduffys = new BarItem(duffysPoint, "Duffys", "I'm at Duffy's!", duffysIcon, duffysR);
+		BarItem overlayjoes = new BarItem(joesPoint, "Joes", "I'm at Joe's!", joesIcon, joesR);
+		BarItem overlaylasalles = new BarItem(lasallesPoint, "Lasalles", "I'm at Lasalles!", lasallesIcon, lasallesR);
+		BarItem overlaylost = new BarItem(lostPoint, "Lost On Main", "I'm at Lost On Main!", lostIcon, lostR);
+		BarItem overlaybear = new BarItem(bearPoint, "Madison Bear Garden", "I'm at The Bear", bearIcon, bearR);
+		BarItem overlaymaltese = new BarItem(maltesePoint, "Maltese", "I'm at the Maltese!", malteseIcon, malteseR);
+		BarItem overlaypanamas = new BarItem(panamasPoint, "Panamas", "I'm at Panamas!", panamasIcon, panamasR);
+		BarItem overlayrileys = new BarItem(rileysPoint, "Rileys", "I'm at Rileys!", rileysIcon, rileysR);
+		BarItem overlaygrad = new BarItem(gradPoint, "The Grad", "I'm at The Graduate!", gradIcon, gradR);
+		BarItem overlaytown = new BarItem(townPoint, "Town Lounge", "I'm at Town Lounge!", townIcon, townR);
+		BarItem overlayubar = new BarItem(ubarPoint, "University Bar", "I'm at the U-Bar!", ubarIcon, ubarR);
 		
 		BarOverlay barsOverlay = new BarOverlay(cnoIco, this);
 		
