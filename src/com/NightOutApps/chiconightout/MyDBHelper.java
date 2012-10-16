@@ -45,7 +45,7 @@ public class MyDBHelper extends SQLiteOpenHelper{
     	boolean dbExist = checkDataBase();
     	if(dbExist){
     		//do nothing - database already exist
-            Toast.makeText(myContext, "database already exists", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(myContext, "database already exists", Toast.LENGTH_SHORT).show();
 
     	}
     	else {
@@ -134,7 +134,7 @@ public class MyDBHelper extends SQLiteOpenHelper{
     		boolean dbExist = checkDataBase();
         	if(dbExist){
         		//do nothing - database already exist
-                Toast.makeText(myContext, "database already exists", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(myContext, "database already exists", Toast.LENGTH_SHORT).show();
 
         	}
     	}

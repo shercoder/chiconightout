@@ -33,7 +33,7 @@ public class DrinkListView extends ListActivity {
 	        Intent thisIntent = getIntent();
 	        bar = thisIntent.getIntExtra("_bar", 0);
 	        //day = thisIntent.getIntExtra("_day", 0);
-	        Toast.makeText(DrinkListView.this, "try to access database", Toast.LENGTH_SHORT).show();
+	        //Toast.makeText(DrinkListView.this, "try to access database", Toast.LENGTH_SHORT).show();
              MyDBHelper myDbHelper = new MyDBHelper(this);
 	            try {
 	                myDbHelper.openDataBase();

@@ -3,6 +3,7 @@ package com.NightOutApps.chiconightout;
 import java.util.ArrayList;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 
@@ -38,17 +39,24 @@ public class BarOverlay extends ItemizedOverlay<BarItem> {
 	}
 	
 	@Override
-	protected boolean onTap(int index) {
-		OverlayItem item = bOverlay.get(index);
+	protected boolean onTap(final int index) {
+		BarItem item = bOverlay.get(index);
+		Drawable tempDraw = item.getMarker(0);
 		AlertDialog.Builder dialog = new AlertDialog.Builder(contx);
 		dialog.setTitle(item.getTitle());
 		dialog.setMessage(item.getSnippet());
+		dialog.setIcon(tempDraw);
+		dialog.setPositiveButton("Specials and Events", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dia, int id){
+				Intent drinkList = new Intent(contx, DrinkListView.class);
+				drinkList.putExtra("_bar", index+1);
+				//drinkList.putExtra("_day", dayOfWeek);
+				contx.startActivity(drinkList);	
+			}
+		});
 		dialog.show();
 		
-		Intent drinkList = new Intent(contx, DrinkListView.class);
-		drinkList.putExtra("_bar", index+1);
-		//drinkList.putExtra("_day", dayOfWeek);
-		contx.startActivity(drinkList);
+		
 		return true;
 	}
 }
