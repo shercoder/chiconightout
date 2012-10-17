@@ -3,11 +3,13 @@ package com.NightOutApps.chiconightout;
 import java.io.IOException;
 import java.util.Calendar;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Rect;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -33,6 +35,8 @@ public class CNOMapView extends MapActivity implements OnClickListener{
 	private String[] colsfrom = {"_id", DRINKNAME, DRINKDESCRIPT};
 	String barStr = "Bar_id = 2";
 	GeoPoint centerP = new GeoPoint(39728478,  -121842176);
+	CallACab cacButton;
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -40,10 +44,10 @@ public class CNOMapView extends MapActivity implements OnClickListener{
 		
 		View barListButton = findViewById(R.id.barlistbutton);
         barListButton.setOnClickListener(this);
-        
 		initMapView();
-		initMyLocation();
-		initDatabase();
+		
+		initMyLocation(); 
+		initDatabase(); //TODO this will eventually be done in an Async Task
 
 		GeoPoint bansheePoint = new GeoPoint(39730006,-121841087); //39729912,-121841041
 		GeoPoint beachPoint = new GeoPoint(39730693,-121839199); //39730685,-121839423
@@ -172,13 +176,13 @@ public class CNOMapView extends MapActivity implements OnClickListener{
             throw new Error("Unable to create database");
         }
 	}
-	
 	public void onClick(View v) {
 		switch(v.getId()) {
 		
 		case R.id.barlistbutton:
-			Intent i = new Intent(this, BarListView.class);
-			startActivity(i);
+			cacButton = new CallACab(this);
+			//Intent i = new Intent(this, BarListView.class);
+			//startActivity(i);
 			break;
 		}
 	}
