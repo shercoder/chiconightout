@@ -44,6 +44,9 @@ public class CNOMapView extends MapActivity implements OnClickListener{
 		
 		View barListButton = findViewById(R.id.barlistbutton);
         barListButton.setOnClickListener(this);
+        View callACabButton = findViewById(R.id.cacbutton);
+        callACabButton.setOnClickListener(this);
+        
 		initMapView();
 		
 		initMyLocation(); 
@@ -180,10 +183,12 @@ public class CNOMapView extends MapActivity implements OnClickListener{
 		switch(v.getId()) {
 		
 		case R.id.barlistbutton:
-			cacButton = new CallACab(this);
-			//Intent i = new Intent(this, BarListView.class);
-			//startActivity(i);
+			Intent i = new Intent(this, BarListView.class);
+			startActivity(i);
 			break;
+		case R.id.cacbutton:
+			cacButton = new CallACab(this);
+			
 		}
 	}
 	
