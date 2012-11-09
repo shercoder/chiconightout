@@ -48,9 +48,12 @@ public class CNOMapView extends MapActivity implements OnClickListener{
         callACabButton.setOnClickListener(this);
         
 		initMapView();
+
 		
 		initMyLocation(); 
 		initDatabase(); //TODO this will eventually be done in an Async Task
+
+
 
 		GeoPoint bansheePoint = new GeoPoint(39730006,-121841087); //39729912,-121841041
 		GeoPoint beachPoint = new GeoPoint(39730693,-121839199); //39730685,-121839423

@@ -54,6 +54,7 @@ public class BarOverlay extends ItemizedOverlay<BarItem> {
 				Intent drinkList = new Intent(contx, DrinkListView.class);
 				drinkList.putExtra("_bar", index+1);
 				drinkList.putExtra("_day", dayOfWeek);
+				//drinkList.putExtra("_day", dayOfWeek);
 				contx.startActivity(drinkList);	
 			}
 		});
