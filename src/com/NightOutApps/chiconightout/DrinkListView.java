@@ -7,10 +7,12 @@ import android.database.SQLException;
  
 import android.content.Intent;
 import android.database.Cursor;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 	
-public class DrinkListView extends ListActivity {
+public class DrinkListView extends ListActivity implements OnClickListener{
 
 	public static final String DRINKNAME = "DrinkName";
 	
@@ -31,33 +33,45 @@ public class DrinkListView extends ListActivity {
 	    public void onCreate(Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState);
 	        setContentView(R.layout.drinklistview);
+	        
+	        View left = findViewById(R.id.left_button);
+	        left.setOnClickListener(this);
+	        View events = findViewById(R.id.events_button);
+	        events.setOnClickListener(this);
+	        View right = findViewById(R.id.right_button);
+	        right.setOnClickListener(this);
 	          
 	        Intent thisIntent = getIntent();
 	        bar = thisIntent.getIntExtra("_bar", 0); //gets the intent that started this mess and gets an extra value that was passed called _bar.
 	        //0 is the default argument is nothing is passed.
 	        day = thisIntent.getIntExtra("_day", 0); //same idea as above.
 	        //Toast.makeText(DrinkListView.this, "try to access database", Toast.LENGTH_SHORT).show();
-             MyDBHelper myDbHelper = new MyDBHelper(this);
-	            try {
-	                myDbHelper.openDataBase();  
-	            }
-	            catch(SQLException sqle){
-	                throw sqle; 
-	            }
-	            //there are 2 bar ids as of now. As we make the database bigger we can setup querys based on what is selected.
-	            String wHERE = "Bar_id = " + bar + " AND Day_id = " + day ; //this is a sql statement that gets all rows where Bar_id = the bar that was picked
-	            c = myDbHelper.getDrinks(DATABASE_TABLE, colsfrom, wHERE, null, null,null, null);
-	            /*this creates a new cursor adapter
-	            @param Context is the list context that you will be filling. 
-	            @param int layout is the layout that you will use for the rows
-	            @param Cursor is the cursor that was returned from the query
-	            @param from is the column names to map from
-	            @param to is the layout ids that the column fields will be put in. 
-	            */
-	            SimpleCursorAdapter myAdapter = new SimpleCursorAdapter(this, R.layout.drinkrow, c, colsfrom, to);
-	            setListAdapter(myAdapter);
-	            
-	            myDbHelper.close();
-	           
-	            }
+	     //   String wHERE = "Bar_id = " + c.bar + " AND Day_id = " + c.day ; //this is a sql statement that gets all rows where Bar_id = the bar that was picked
+	     //   cur = myDbHelper.getDrinks(c.DATABASE_TABLE, colsfrom, wHERE, null, null,null, null);  
+	        new AsyncList(this).execute();
+	   }
+	@Override
+	public void onClick(View v) {
+		switch(v.getId()) {
+		
+		case R.id.left_button:
+			if(day == 1)
+				day = 7;
+			else
+				day--;
+			break;
+		case R.id.events_button:
+	        Toast.makeText(DrinkListView.this, "Events List View...", Toast.LENGTH_SHORT).show();
+			break;
+		case R.id.right_button:
+			if(day == 7)
+				day = 1;
+			else
+				day++;
+			break;
+		}
+		new AsyncList(this).execute();
+		
+	}	
+	
 }
