@@ -122,8 +122,10 @@ public class CNOMapView extends MapActivity implements OnClickListener{
 		BarItem overlaytown = new BarItem(townPoint, "Town Lounge", "I'm at Town Lounge!", townIcon, townR);
 		BarItem overlayubar = new BarItem(ubarPoint, "University Bar", "I'm at the U-Bar!", ubarIcon, ubarR);
 		
-		BarOverlay barsOverlay = new BarOverlay(cnoIco, this);
+		//This creates a new bar overlay which is a list of overlay items. a BatItem extends overlayitem.
+		BarOverlay barsOverlay = new BarOverlay(cnoIco, this, dayOfWeek);
 		
+		//this is adding all of the custom bar overlayitems that i created previously
 		barsOverlay.addOverlay(overlaybanshee);
 		barsOverlay.addOverlay(overlaybeach);
 		barsOverlay.addOverlay(overlaybellas);

@@ -17,4 +17,9 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below = "@id/text02" />
+    <TextView
+        android:id = "@+id/text04"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below = "@id/text03" />
 </RelativeLayout>

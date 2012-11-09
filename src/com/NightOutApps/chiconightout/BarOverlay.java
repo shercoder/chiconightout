@@ -15,10 +15,13 @@ public class BarOverlay extends ItemizedOverlay<BarItem> {
 	
 	private ArrayList<BarItem> bOverlay = new ArrayList<BarItem>();
 	private Context contx;
+	private int dayOfWeek;
 	
-	public BarOverlay(Drawable defaultMarker, Context cont) {
+	public BarOverlay(Drawable defaultMarker, Context cont, int doW) {
 		super(boundCenterBottom(defaultMarker));
 		contx = cont;
+		dayOfWeek = doW;
+		
 	}
 	
 	@Override
@@ -50,7 +53,7 @@ public class BarOverlay extends ItemizedOverlay<BarItem> {
 			public void onClick(DialogInterface dia, int id){
 				Intent drinkList = new Intent(contx, DrinkListView.class);
 				drinkList.putExtra("_bar", index+1);
-				//drinkList.putExtra("_day", dayOfWeek);
+				drinkList.putExtra("_day", dayOfWeek);
 				contx.startActivity(drinkList);	
 			}
 		});

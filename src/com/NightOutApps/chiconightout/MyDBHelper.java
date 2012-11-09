@@ -43,17 +43,19 @@ public class MyDBHelper extends SQLiteOpenHelper{
       * */
     public void createDataBase() throws IOException{
     	boolean dbExist = checkDataBase();
-    	if(dbExist){
+    	//-if(dbExist){
     		//do nothing - database already exist
-            //Toast.makeText(myContext, "database already exists", Toast.LENGTH_SHORT).show();
-
-    	}
-    	else {
+    		//this is where i will call the upodate databasefunction to contact the webserver.
+    	//-	Toast.makeText(myContext, "doing nothing", Toast.LENGTH_LONG).show();
+    	//-}
+    	//-else {
     		//By calling this method and empty database will be created into the default system path
     		//of your application so we are gonna be able to overwrite that database with our database.
     		this.getReadableDatabase();
     		try {
     			copyDataBase();
+    			//the copy of this database should also include updating it to the most recent version
+    			Toast.makeText(myContext, "copy database", Toast.LENGTH_LONG).show();
      
     		} 
     		catch (IOException e) {
@@ -63,7 +65,7 @@ public class MyDBHelper extends SQLiteOpenHelper{
     		}
     	}
      
-    }
+  //-  }
      
     /**
       * Check if the database already exist to avoid re-copying the file each time you open the application.
@@ -143,6 +145,7 @@ public class MyDBHelper extends SQLiteOpenHelper{
     	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
      
     	}
+    	
     	public Cursor getDrinks(String table,String[] columns, String selection,String[] selectionArgs,String groupBy,String having,String orderBy) {
 			return myDataBase.query(table, columns, selection, selectionArgs, groupBy, having, orderBy);
 		}
