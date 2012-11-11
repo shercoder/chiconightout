@@ -11,6 +11,8 @@
     	android:layout_height="wrap_content"
     	android:background="@color/background">
     	
+        
+        
     <ImageButton 
         android:id="@+id/left_button"
         android:layout_width = "50dp"

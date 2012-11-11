@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.os.AsyncTask;
 import android.widget.SimpleCursorAdapter;
+import android.widget.Toast;
 
 public class AsyncList extends AsyncTask <Void, Void, Void> {
 public static final String DRINKNAME = "DrinkName";
@@ -40,6 +41,7 @@ public static final String DRINKNAME = "DrinkName";
          catch(SQLException sqle){
              throw sqle; 
          }
+			//Toast.makeText(c, "async day is " + c.day, Toast.LENGTH_SHORT).show();
     	String wHERE = "Bar_id = " + c.bar + " AND Day_id = " + c.day ; //this is a sql statement that gets all rows where Bar_id = the bar that was picked
         cur = myDbHelper.getDrinks(c.DATABASE_TABLE, colsfrom, wHERE, null, null,null, null);
         /*this creates a new cursor adapter
@@ -55,9 +57,14 @@ public static final String DRINKNAME = "DrinkName";
     }
     public void onPostExecute (Void Unused) {
     	pd.dismiss();
+    	if (cur.getCount() == 0){
+    		
+    	}	
+    	else {
     	SimpleCursorAdapter myAdapter = new SimpleCursorAdapter(c, R.layout.drinkrow, cur, colsfrom, to);
     	c.setListAdapter(myAdapter);
     	myAdapter.notifyDataSetChanged();
+    	}
     }
     	  
 }

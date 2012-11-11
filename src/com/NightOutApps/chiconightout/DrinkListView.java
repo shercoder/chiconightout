@@ -56,18 +56,30 @@ public class DrinkListView extends ListActivity implements OnClickListener{
 		
 		case R.id.left_button:
 			if(day == 1)
+			{
 				day = 7;
+			Toast.makeText(DrinkListView.this, "back to 7", Toast.LENGTH_SHORT).show();
+			}
 			else
+			{
 				day--;
+			Toast.makeText(DrinkListView.this, "day is " + day, Toast.LENGTH_SHORT).show();
+			}
 			break;
 		case R.id.events_button:
 	        Toast.makeText(DrinkListView.this, "Events List View...", Toast.LENGTH_SHORT).show();
 			break;
 		case R.id.right_button:
 			if(day == 7)
+			{	
 				day = 1;
+				Toast.makeText(DrinkListView.this, "back to 1", Toast.LENGTH_SHORT).show();
+			}
 			else
+			{
 				day++;
+			Toast.makeText(DrinkListView.this, "day is " + day, Toast.LENGTH_SHORT).show();
+			}
 			break;
 		}
 		new AsyncList(this).execute();
