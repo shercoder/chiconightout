@@ -50,7 +50,7 @@ public class DrinkListView extends ListActivity implements OnClickListener{
 	     //   cur = myDbHelper.getDrinks(c.DATABASE_TABLE, colsfrom, wHERE, null, null,null, null);  
 	        new AsyncList(this).execute();
 	   }
-	@Override
+	//@Override
 	public void onClick(View v) {
 		switch(v.getId()) {
 		

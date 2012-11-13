@@ -8,4 +8,14 @@
 	<string name="drinkList">DrinkListView</string>
 	<string name="barList">BarListView</string>
 	<string name="description">BarListViewbutton</string>
+	
+    <string name="title_activity_main">MainActivity</string>
+    <string-array name="items">
+    <item name="beer_12">Beer 12 oz</item>
+    <item name="beer_16">Beer 16 oz</item>    
+    <item name="beer_24">Beer 24 oz</item>
+    <item name="glass_wine">Glass of Wine</item>    
+    <item name="shot_vodka">Shot with Vodka</item>         
+    </string-array>
+    
 </resources>
