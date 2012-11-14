@@ -15,6 +15,11 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
 
+import com.facebook.android.AsyncFacebookRunner;
+import com.facebook.android.DialogError;
+import com.facebook.android.Facebook;
+import com.facebook.android.Facebook.DialogListener;
+import com.facebook.android.FacebookError;
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
 import com.google.android.maps.MapController;
@@ -36,6 +41,9 @@ public class CNOMapView extends MapActivity implements OnClickListener{
 	String barStr = "Bar_id = 2";
 	GeoPoint centerP = new GeoPoint(39728478,  -121842176);
 	CallACab cacButton;
+	 Facebook facebook = new Facebook("281094275327241");
+	 AsyncFacebookRunner mAsyncRunner = new AsyncFacebookRunner(facebook);
+	
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -50,6 +58,8 @@ public class CNOMapView extends MapActivity implements OnClickListener{
         
         View callACabButton = findViewById(R.id.cacbutton);
         callACabButton.setOnClickListener(this);
+        View facebookButton = findViewById(R.id.facebookbutton);
+        facebookButton.setOnClickListener(this);
         
         
 		initMapView();
@@ -192,6 +202,7 @@ public class CNOMapView extends MapActivity implements OnClickListener{
 	public void onClick(View v) {
 		Intent i;
 		switch(v.getId()) {
+		
 			case R.id.bacbutton:
 				i = new Intent(this, BAC.class);
 				startActivity(i);
@@ -203,7 +214,38 @@ public class CNOMapView extends MapActivity implements OnClickListener{
 			case R.id.cacbutton:
 				cacButton = new CallACab(this);
 				break;
-			
+			case R.id.facebookbutton:
+				authorizeFacebook();
+				break;
 		}
 	}
+	
+	public void authorizeFacebook() {
+		facebook.authorize(this, new DialogListener() {
+            @Override
+            public void onComplete(Bundle values) {}
+
+            @Override
+            public void onCancel() {}
+
+			@Override
+			public void onFacebookError(FacebookError e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void onError(DialogError e) {
+				// TODO Auto-generated method stub
+				
+			}
+        });
+	}
+	
+	@Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        facebook.authorizeCallback(requestCode, resultCode, data);
+    }
 }

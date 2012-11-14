@@ -90,7 +90,7 @@ public class BarListView extends Activity {
         c = myDbHelper.getDrinks(DATABASE_TABLE, colsfrom, barStr, null, null,null, null);
         
         c.
-        myDbHelper.close(); */
+        myDbHelper.close(); */ 
         // Each row stores Bar name, Bar Icon
         List<HashMap < String,String > > barList = new ArrayList<HashMap <String,String> >();
         //add bar icons and bar names to the list
