@@ -12,8 +12,10 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:clickable="true"
-        android:apiKey = "01mTTJePtvgtofiwjjv4z9f0NgftQwNs7SYlLPw"> <!--Jasons key-->        
-        <!--android:apiKey = "0xR1g8qRRLoUp8-8gd7050zKWtMQCMDDHhizisw" >Aarons Key-->
+        android:apiKey = "0xR1g8qRRLoUp8-8gd7050zKWtMQCMDDHhizisw" ><!--Aarons Key-->
+        
+        <!--android:apiKey = "01mTTJePtvgtofiwjjv4z9f0NgftQwNs7SYlLPw">Jasons key-->        
+         
     </com.google.android.maps.MapView>
     
     <ImageButton 
@@ -40,7 +42,7 @@
         android:contentDescription="@string/description">
     </ImageButton>
     
-    <ImageButton 
+     <!--<ImageButton 
         android:id="@+id/bacbutton"
         android:layout_width = "80dp"
         android:layout_height = "80dp"
@@ -50,7 +52,7 @@
 		android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:contentDescription="@string/description">
-    </ImageButton>
+    </ImageButton>-->
 
     <ImageButton 
         android:id="@+id/facebookbutton"

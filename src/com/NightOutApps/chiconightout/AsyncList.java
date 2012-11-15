@@ -61,9 +61,9 @@ public static final String DRINKNAME = "DrinkName";
     		
     	}	
     	else {
-    	SimpleCursorAdapter myAdapter = new SimpleCursorAdapter(c, R.layout.drinkrow, cur, colsfrom, to);
-    	c.setListAdapter(myAdapter);
-    	myAdapter.notifyDataSetChanged();
+    	//c.drinkList = new SimpleCursorAdapter(c, R.layout.drinkrow, cur, colsfrom, to);
+    	//c.setListAdapter(c.drinkList);
+    	//c.drinkList.notifyDataSetChanged();
     	}
     }
     	  
