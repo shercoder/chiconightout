@@ -24,8 +24,6 @@ public class DrinkListView extends ListActivity implements OnClickListener{
 	public static final String DAY = "Day_id";
 	
  	    /** Called when the activity is first created. */
- 	private Cursor c = null;	
- 	
  	//private String[] colsfrom = {"_id", DRINKNAME, DRINKDESCRIPT};
 	
  	//private int[] to = new int[] {R.id.text01, R.id.text02, R.id.text03};	
@@ -61,16 +59,17 @@ public class DrinkListView extends ListActivity implements OnClickListener{
               /*MyDBHelper myDbHelper = new MyDBHelper(this);
  	            try {
  	            	myDbHelper.openDataBase();
-	                myDbHelper.openDataBase();  
+	                //myDbHelper.openDataBase();  
  	            }
  	            catch(SQLException sqle){
  	                throw sqle; 
- 	            }*/
+ 	            }
+ 	           String wHERE = "Bar_id = " + bar + " AND Day_id = " + day ; //this is a sql statement that gets all rows where Bar_id = the bar that was picked
+
  	            //there are 2 bar ids as of now. As we make the database bigger we can setup querys based on what is selected.
 	            //String barStr = "Bar_id = " + bar;
-	            //c = myDbHelper.getDrinks(DATABASE_TABLE, colsfrom, barStr, null, null,null, null);
-	            c = fillList(bar, day); 
- 	            //c = myDbHelper.getDrinks(DATABASE_TABLE, colsfrom, wHERE, null, null,null, null);
+	            //c = fillList(bar, day); 
+ 	            c = myDbHelper.getDrinks(DATABASE_TABLE, colsfrom, wHERE, null, null,null, null);
  	            /*this creates a new cursor adapter
  	            @param Context is the list context that you will be filling. 
  	            @param int layout is the layout that you will use for the rows
@@ -79,9 +78,10 @@ public class DrinkListView extends ListActivity implements OnClickListener{
 	            @param to is the layout ids that the fields will be put in. 
 	            @param from is the column names to map from
 	            @param to is the layout ids that the column fields will be put in. 
- 	            */
- 	            SimpleCursorAdapter myAdapter = new SimpleCursorAdapter(this, R.layout.drinkrow, c, colsfrom, to);
- 	            setListAdapter(myAdapter);
+ 	            
+ 	           myDbHelper.close();*/
+ 	            fillList();
+ 	            
  	   }
 
 	/*public static final String DAY = "Day_id";
@@ -154,16 +154,13 @@ public class DrinkListView extends ListActivity implements OnClickListener{
 			}
 			break;
 		}
+		fillList();
 	}
-		//drinkList.changeCursor(fillList());
-		//drinkList.notifyDataSetChanged();
-	//}
-	private Cursor fillList(int b, int d) {
+
+	private void fillList() {
 		MyDBHelper myDbHelper = new MyDBHelper(this);
 		Cursor cursor;
-		int bar = b;
-		int day = d;
-        String wHERE = "Bar_id = " + bar + " AND Day_id = " + day ; //this is a sql statement that gets all rows where Bar_id = the bar that was picked
+        String wHERE = "Bar_id = " + bar + " AND Day_id = " + day; //this is a sql statement that gets all rows where Bar_id = the bar that was picked
 
 		try {
             myDbHelper.openDataBase();  
@@ -181,9 +178,12 @@ public class DrinkListView extends ListActivity implements OnClickListener{
        	@param from is the column names to map from
        	@param to is the layout ids that the column fields will be put in. 
         */
+
+        	SimpleCursorAdapter myAdapter = new SimpleCursorAdapter(this, R.layout.drinkrow, cursor, colsfrom, to);
+        	setListAdapter(myAdapter);
+      
         myDbHelper.close();
         
-        return cursor;
        	//drinkList.notifyDataSetChanged();
 		
 	}
