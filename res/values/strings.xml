@@ -7,6 +7,7 @@
 	<string name="bar_icon">The Icon That matches the bar name</string>
 	<string name="drinkList">DrinkListView</string>
 	<string name="barList">BarListView</string>
+	<string name="bacButton">Bac Button</string>
 	<string name="description">BarListViewbutton</string>
 	
     <string name="title_activity_main">MainActivity</string>
