@@ -2,7 +2,6 @@ package com.NightOutApps.chiconightout;
 
 import java.io.IOException;
 import java.util.Calendar;
-
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.database.Cursor;
@@ -14,7 +13,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
-
 import com.facebook.android.AsyncFacebookRunner;
 import com.facebook.android.DialogError;
 import com.facebook.android.Facebook;
@@ -29,20 +27,32 @@ import com.google.android.maps.MyLocationOverlay;
 
 public class CNOMapView extends MapActivity implements OnClickListener{
 	private MapView map;
+	
 	private MapController control;
+	
 	Calendar calendar = Calendar.getInstance();
+	
 	int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
+	
 	public static final String DRINKNAME = "DrinkName";
 	
 	public static final String DRINKDESCRIPT = "DrinkDescription";
+	
 	private Cursor c = null;
+	
 	public static final String DATABASE_TABLE = "Drink";
+	
 	private String[] colsfrom = {"_id", DRINKNAME, DRINKDESCRIPT};
+	
 	String barStr = "Bar_id = 2";
+	
 	GeoPoint centerP = new GeoPoint(39728478,  -121842176);
+	
 	CallACab cacButton;
-	 Facebook facebook = new Facebook("281094275327241");
-	 AsyncFacebookRunner mAsyncRunner = new AsyncFacebookRunner(facebook);
+	
+	Facebook facebook = new Facebook("281094275327241");
+	
+	AsyncFacebookRunner mAsyncRunner = new AsyncFacebookRunner(facebook);
 	
 	
 	@Override
@@ -58,6 +68,7 @@ public class CNOMapView extends MapActivity implements OnClickListener{
         
         View callACabButton = findViewById(R.id.cacbutton);
         callACabButton.setOnClickListener(this);
+        
         View facebookButton = findViewById(R.id.facebookbutton);
         facebookButton.setOnClickListener(this);
         
