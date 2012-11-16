@@ -50,8 +50,8 @@ public class CNOMapView extends MapActivity implements OnClickListener{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.map);
 		
-		//View bacButton = findViewById(R.id.bacbutton);
-		//bacButton.setOnClickListener(this);
+		View bacButton = findViewById(R.id.bacbutton);
+		bacButton.setOnClickListener(this);
 		
 		View barListButton = findViewById(R.id.barlistbutton);
         barListButton.setOnClickListener(this);
@@ -201,12 +201,14 @@ public class CNOMapView extends MapActivity implements OnClickListener{
 	}
 	public void onClick(View v) {
 		Intent i;
+		Toast.makeText(CNOMapView.this, "Herp", Toast.LENGTH_SHORT).show();
 		switch(v.getId()) {
 		
-			//case R.id.bacbutton:
-			//	i = new Intent(this, BAC.class);
-			//	startActivity(i);
-			//	break;
+			case R.id.bacbutton:
+				Toast.makeText(CNOMapView.this, "Derp", Toast.LENGTH_SHORT).show();
+				i = new Intent(this, BAC.class);
+				startActivity(i);
+				break;
 			case R.id.barlistbutton:
 				i = new Intent(this, BarListView.class);
 				startActivity(i);
