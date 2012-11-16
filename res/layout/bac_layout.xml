@@ -1,0 +1,182 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+<RadioGroup 
+    android:orientation="horizontal"
+    android:layout_height="0dp" 
+    android:layout_width="match_parent" 
+    android:layout_weight="1"
+>
+<RadioButton 
+        android:layout_height="wrap_content" 
+        android:layout_width="match_parent" 
+        android:layout_weight="1" 
+        android:text="Male" 
+        android:id="@+id/male"
+        />
+<RadioButton 
+    android:layout_height="wrap_content" 
+    android:layout_width="match_parent" 
+    android:layout_weight="1" 
+    android:text="Female" 
+    android:id="@+id/female"
+    /> 
+    
+ </RadioGroup> 
+ 
+ <LinearLayout 
+     android:layout_height="wrap_content" 
+     android:layout_width="match_parent" 
+     android:layout_weight="1" 
+     android:gravity="center_vertical"> 
+ 
+ <TextView 
+     android:layout_height="wrap_content" 
+     android:layout_width="0dp" 
+     android:layout_weight="1" 
+     android:text="Weight(lbs): " 
+     android:id="@+id/weightLabel" 
+     android:textAppearance="?android:attr/textAppearanceLarge" 
+     android:layout_gravity="center_vertical"/> 
+
+<EditText 
+    android:layout_height="wrap_content" 
+    android:layout_width="0dp" 
+    android:layout_weight="1" 
+    android:id="@+id/weight" 
+    android:inputType="number" 
+    android:ems="10"
+    android:numeric="decimal"/>    
+</LinearLayout> 
+
+<LinearLayout 
+    android:layout_height="wrap_content" 
+    android:layout_width="match_parent" 
+    android:layout_weight="1" 
+    android:gravity="center_vertical">
+
+<TextView 
+    android:layout_height="wrap_content" 
+    android:layout_width="0dp" 
+    android:layout_weight="1" 
+    android:text="Hours Drinking:" 
+    android:id="@+id/timeLabel" 
+    android:textAppearance="?android:attr/textAppearanceLarge" 
+    android:layout_gravity="center_vertical"/> 
+
+<EditText 
+    android:layout_height="wrap_content" 
+    android:layout_width="0dp" 
+    android:layout_weight="1" 
+    android:id="@+id/hoursDrank" 
+    android:inputType="number" 
+    android:ems="10"
+    android:numeric="decimal"
+    /> 
+    
+</LinearLayout>
+
+
+
+
+
+<LinearLayout 
+    android:layout_height="wrap_content" 
+    android:layout_width="match_parent" 
+    android:layout_weight="1" 
+    android:gravity="center_vertical">
+    
+<TextView 
+    android:layout_height="wrap_content" 
+    android:layout_width="0dp" 
+    android:layout_weight="1" 
+    android:text="Number of Drinks: " 
+    android:id="@+id/drinkLabel" 
+    android:textAppearance="?android:attr/textAppearanceLarge" 
+    android:layout_gravity="center_vertical"/> 
+    
+<EditText 
+    android:layout_height="wrap_content" 
+    android:layout_width="0dp" 
+    android:layout_weight="1" 
+    android:id="@+id/drinksConsumed" 
+    android:inputType="number" 
+    android:ems="10"
+    android:numeric="decimal"> 
+    
+<requestFocus/> 
+
+</EditText> 
+
+</LinearLayout>
+
+<LinearLayout 
+    android:layout_height="wrap_content" 
+    android:layout_width="match_parent" 
+    android:layout_weight="1" 
+    android:gravity="center_vertical">
+    
+<TextView 
+    android:layout_height="wrap_content" 
+    android:layout_width="0dp" 
+    android:layout_weight="1" 
+    android:text="Type of Drink: " 
+    android:id="@+id/typeOfDrinkLabel" 
+    android:textAppearance="?android:attr/textAppearanceLarge" 
+    android:layout_gravity="center_vertical"/> 
+    
+<Spinner
+    android:id="@+id/spinner1"
+    android:layout_height="wrap_content"
+    android:layout_width="0dp" 
+    android:layout_weight="1"  
+    
+    />
+    
+<requestFocus/> 
+
+
+
+</LinearLayout>
+
+
+
+<LinearLayout 
+    android:layout_height="wrap_content" 
+    android:layout_width="match_parent" 
+    android:layout_weight="1" 
+    android:gravity="center_vertical">
+    
+<TextView 
+    android:layout_height="wrap_content" 
+    android:layout_width="0dp" 
+    android:layout_weight="1" 
+    android:text="Click to calculate: " 
+    android:id="@+id/typeOfDrinkLabel" 
+    android:textAppearance="?android:attr/textAppearanceLarge" 
+    android:layout_gravity="center_vertical"/> 
+    
+<Button 
+    android:layout_height="wrap_content" 
+    android:layout_width="0dp"
+    android:layout_weight="1" 
+    android:text="BAC" 
+    android:id="@+id/calculate" 
+    android:textAppearance="?android:attr/textAppearanceLarge" 
+    android:layout_gravity="center_vertical" 
+    android:onClick="clickCalculate"/>
+    
+<requestFocus/> 
+
+
+
+</LinearLayout>
+ 
+    <requestFocus/> 
+
+    
+</LinearLayout>
