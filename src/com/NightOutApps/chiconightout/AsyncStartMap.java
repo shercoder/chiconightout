@@ -2,13 +2,14 @@ package com.NightOutApps.chiconightout;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.AsyncTask;
 
 public class AsyncStartMap extends AsyncTask<Void, Void, Void>{
 
-	private Activity ctx;
+	private Context ctx;
 	private ProgressDialog dialog;
-	public AsyncStartMap(Activity cont){
+	public AsyncStartMap(Context cont){
 		this.ctx = cont;
 	}
 	
