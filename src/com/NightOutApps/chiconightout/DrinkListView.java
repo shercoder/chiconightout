@@ -22,30 +22,24 @@ public class DrinkListView extends ListActivity implements OnClickListener{
 	
  	
 	public static final String DAY = "Day_id";
-	
- 	    /** Called when the activity is first created. */
- 	//private String[] colsfrom = {"_id", DRINKNAME, DRINKDESCRIPT};
-	
- 	//private int[] to = new int[] {R.id.text01, R.id.text02, R.id.text03};	
-	
+
  	private String[] colsfrom = {"_id", DRINKNAME, DRINKDESCRIPT, DAY};
-	private int[] to = new int[] {R.id.text01, R.id.text02, R.id.text03, R.id.text04};
+
+ 	private int[] to = new int[] {R.id.text01, R.id.text02, R.id.text03, R.id.text04};
  	
 	public int bar = 0;
 	
-	//public int day = 0;
-	//public int bar = 0; //the bar number. Bars are alphabetical
 	public int day = 0; //0==sunday 6 == Saturday
-	//private String wHERE = "Bar_id = " + bar + " AND Day_id = " + day ;
- 	   @Override
- 	    public void onCreate(Bundle savedInstanceState) {
- 	        super.onCreate(savedInstanceState);
- 	        setContentView(R.layout.drinklistview);
+
+	@Override
+ 	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+ 	    setContentView(R.layout.drinklistview);
 	        
- 	        View left = findViewById(R.id.left_button);
-	        left.setOnClickListener(this);
-	        View events = findViewById(R.id.events_button);
-	        events.setOnClickListener(this);
+ 	    View left = findViewById(R.id.left_button);
+	    left.setOnClickListener(this);
+	    View events = findViewById(R.id.events_button);
+	    events.setOnClickListener(this);
 	        View right = findViewById(R.id.right_button);
 	        right.setOnClickListener(this);
 	          
@@ -55,74 +49,13 @@ public class DrinkListView extends ListActivity implements OnClickListener{
 	        bar = thisIntent.getIntExtra("_bar", 0); //gets the intent that started this mess and gets an extra value that was passed called _bar.
 	        //0 is the default argument is nothing is passed.
 	        day = thisIntent.getIntExtra("_day", 0); //same idea as above.
- 	        //Toast.makeText(DrinkListView.this, "try to access database", Toast.LENGTH_SHORT).show();
-              /*MyDBHelper myDbHelper = new MyDBHelper(this);
- 	            try {
- 	            	myDbHelper.openDataBase();
-	                //myDbHelper.openDataBase();  
- 	            }
- 	            catch(SQLException sqle){
- 	                throw sqle; 
- 	            }
- 	           String wHERE = "Bar_id = " + bar + " AND Day_id = " + day ; //this is a sql statement that gets all rows where Bar_id = the bar that was picked
-
- 	            //there are 2 bar ids as of now. As we make the database bigger we can setup querys based on what is selected.
-	            //String barStr = "Bar_id = " + bar;
-	            //c = fillList(bar, day); 
- 	            c = myDbHelper.getDrinks(DATABASE_TABLE, colsfrom, wHERE, null, null,null, null);
- 	            /*this creates a new cursor adapter
- 	            @param Context is the list context that you will be filling. 
- 	            @param int layout is the layout that you will use for the rows
- 	            @param Cursor is the cursor that was returned from the query
-	            @param from is the column names
-	            @param to is the layout ids that the fields will be put in. 
-	            @param from is the column names to map from
-	            @param to is the layout ids that the column fields will be put in. 
- 	            
- 	           myDbHelper.close();*/
+ 	        
  	            fillList();
  	            
  	   }
 
-	/*public static final String DAY = "Day_id";
 	
-	public SimpleCursorAdapter drinkList = null;
-	
-	private String[] colsfrom = {"_id", DRINKNAME, DRINKDESCRIPT, DAY};
-	
-	private int[] to = new int[] {R.id.text01, R.id.text02, R.id.text03, R.id.text03};
-	
-	public int bar = 0; //the bar number. Bars are alphabetical
-	
-	public int day = 0; //0==sunday 6 == Saturday
-	
-	private String wHERE = "Bar_id = " + bar + " AND Day_id = " + day ;
-	
-	private Cursor cur = null;
-	
-	   @Override
-	    public void onCreate(Bundle savedInstanceState) {
-	        super.onCreate(savedInstanceState);
-	        setContentView(R.layout.drinklistview);
-	        
-	        View left = findViewById(R.id.left_button);
-	        left.setOnClickListener(this);
-	        View events = findViewById(R.id.events_button);
-	        events.setOnClickListener(this);
-	        View right = findViewById(R.id.right_button);
-	        right.setOnClickListener(this);
-	          
-	        
-	        Intent thisIntent = getIntent();
-	        bar = thisIntent.getIntExtra("_bar", 0); //gets the intent that started this mess and gets an extra value that was passed called _bar.
-	        //0 is the default argument is nothing is passed.
-	        day = thisIntent.getIntExtra("_day", 0); //same idea as above.
-	        
-	        cur = fillList();
-	       	drinkList = new SimpleCursorAdapter(this, R.layout.drinkrow, cur, colsfrom, to);
-	       	setListAdapter(drinkList);
-	   }*/
-	//@Override
+	@Override
 	public void onClick(View v) {
 		switch(v.getId()) {
 		
@@ -185,7 +118,6 @@ public class DrinkListView extends ListActivity implements OnClickListener{
         myDbHelper.close();
         
        	//drinkList.notifyDataSetChanged();
-		
 	}
 		
 }
