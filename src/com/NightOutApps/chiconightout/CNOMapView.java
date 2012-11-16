@@ -50,8 +50,8 @@ public class CNOMapView extends MapActivity implements OnClickListener{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.map);
 		
-		//View bacButton = findViewById(R.id.bacbutton);
-		//bacButton.setOnClickListener(this);
+		View bacButton = findViewById(R.id.bacbutton);
+		bacButton.setOnClickListener(this);
 		
 		View barListButton = findViewById(R.id.barlistbutton);
         barListButton.setOnClickListener(this);
@@ -224,19 +224,19 @@ public class CNOMapView extends MapActivity implements OnClickListener{
 	
 	public void authorizeFacebook() {
 		facebook.authorize(this, new DialogListener() {
-            //@Override
+            @Override
             public void onComplete(Bundle values) {}
 
-            //@Override
+            @Override
             public void onCancel() {}
 
-			//@Override
+			@Override
 			public void onFacebookError(FacebookError e) {
 				// TODO Auto-generated method stub
 				
 			}
 
-			//@Override
+			@Override
 			public void onError(DialogError e) {
 				// TODO Auto-generated method stub
 				
