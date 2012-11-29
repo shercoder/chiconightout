@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/frame"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+    
+    <com.google.android.maps.MapView
+        android:id="@+id/map"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:clickable="true"
+        
+        android:apiKey = "01mTTJePtvgtofiwjjv4z9f0NgftQwNs7SYlLPw"><!--Jasons key-->
+        
+        <!--android:apiKey = "0xR1g8qRRLoUp8-8gd7050zKWtMQCMDDHhizisw" >Aarons Key-->
+        
+                
+         
+    </com.google.android.maps.MapView>
+    
+    <ImageButton 
+        android:id="@+id/barlistbutton"
+        android:layout_width = "80dp"
+        android:layout_height = "80dp"
+        android:padding = "20dp"
+        android:src = "@drawable/list"
+        android:background="@null"
+		android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:contentDescription="@string/description">
+    </ImageButton>
+    
+    <ImageButton 
+        android:id="@+id/cacbutton"
+        android:layout_width = "80dp"
+        android:layout_height = "80dp"
+        android:padding = "20dp"
+        android:src = "@drawable/taxi"
+        android:background="@null"
+		android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:contentDescription="@string/description">
+    </ImageButton>
+    
+     <ImageButton 
+        android:id="@+id/bacbutton"
+        android:layout_width = "80dp"
+        android:layout_height = "80dp"
+        android:padding = "20dp"
+        android:src = "@drawable/bac_icon"
+        android:background="@null"
+		android:layout_toLeftOf="@id/barlistbutton"
+        android:layout_alignParentBottom="true"
+        android:contentDescription="@string/description">
+    </ImageButton>
+
+    <ImageButton 
+        android:id="@+id/facebookbutton"
+        android:layout_width = "80dp"
+        android:layout_height = "80dp"
+        android:padding = "20dp"
+        android:src = "@drawable/facebook_ico"
+        android:background="@null"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@id/cacbutton"
+        android:contentDescription="@string/description">
+    </ImageButton>
+
+    </RelativeLayout>

@@ -8,18 +8,22 @@
     android:layout_height="fill_parent" >
     
     <com.google.android.maps.MapView
-        android:id="@+id/map"
+        android:id="@+id/mapview"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:clickable="true"
-        
-        android:apiKey = "01mTTJePtvgtofiwjjv4z9f0NgftQwNs7SYlLPw"><!--Jasons key-->
-        
-        <!--android:apiKey = "0xR1g8qRRLoUp8-8gd7050zKWtMQCMDDHhizisw" >Aarons Key-->
-        
-                
-         
+        android:apiKey = "0xR1g8qRRLoUp8-8gd7050zKWtMQCMDDHhizisw"><!--Aarons Key-->
+        <!--android:apiKey = "01mTTJePtvgtofiwjjv4z9f0NgftQwNs7SYlLPw" >Jasons key-->
     </com.google.android.maps.MapView>
+    
+    <ZoomControls
+    android:id="@+id/zoom"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    android:padding = "10dp"
+    android:layout_alignParentTop="true"	/>
+    
     
     <ImageButton 
         android:id="@+id/barlistbutton"
