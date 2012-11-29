@@ -2,30 +2,33 @@ package com.NightOutApps.chiconightout;
 
 import java.io.IOException;
 import java.util.Calendar;
-import android.app.AlertDialog;
+
+import android.R;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Rect;
-import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
+
+import com.actionbarsherlock.app.SherlockMapActivity;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuInflater;
+import com.actionbarsherlock.view.MenuItem;
 import com.facebook.android.AsyncFacebookRunner;
 import com.facebook.android.DialogError;
 import com.facebook.android.Facebook;
 import com.facebook.android.Facebook.DialogListener;
 import com.facebook.android.FacebookError;
 import com.google.android.maps.GeoPoint;
-import com.google.android.maps.MapActivity;
 import com.google.android.maps.MapController;
 import com.google.android.maps.MapView;
 import com.google.android.maps.MyLocationOverlay;
 
 
-public class CNOMapView extends MapActivity implements OnClickListener{
+public class CNOMapView extends SherlockMapActivity implements OnClickListener{
 	private MapView map;
 	
 	private MapController control;
@@ -80,7 +83,7 @@ public class CNOMapView extends MapActivity implements OnClickListener{
 		initDatabase(); //TODO this will eventually be done in an Async Task
 
 
-
+		
 		GeoPoint bansheePoint = new GeoPoint(39730006,-121841087); //39729912,-121841041
 		GeoPoint beachPoint = new GeoPoint(39730693,-121839199); //39730685,-121839423
 		GeoPoint bellasPoint = new GeoPoint(39729984,-121841755);
@@ -174,6 +177,14 @@ public class CNOMapView extends MapActivity implements OnClickListener{
 		
 		map.getOverlays().add(barsOverlay);
 }
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		new MenuInflater(this).inflate(R.menu.activity_bar_list_view, menu);
+		return (super.onCreateOptionsMenu(menu));
+
+	}
+	
 	@Override
 	protected boolean isRouteDisplayed() {
 		return false;
@@ -261,4 +272,6 @@ public class CNOMapView extends MapActivity implements OnClickListener{
 
         facebook.authorizeCallback(requestCode, resultCode, data);
     }
+	
+	
 }
