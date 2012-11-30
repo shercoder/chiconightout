@@ -223,11 +223,9 @@ public class CNOMapView extends SherlockMapActivity implements OnClickListener{
 	}
 	public void onClick(View v) {
 		Intent i;
-		Toast.makeText(CNOMapView.this, "Herp", Toast.LENGTH_SHORT).show();
 		switch(v.getId()) {
 		
 			case R.id.bacbutton:
-				Toast.makeText(CNOMapView.this, "Derp", Toast.LENGTH_SHORT).show();
 				i = new Intent(this, BAC.class);
 				startActivity(i);
 				break;
@@ -246,19 +244,19 @@ public class CNOMapView extends SherlockMapActivity implements OnClickListener{
 	
 	public void authorizeFacebook() {
 		facebook.authorize(this, new DialogListener() {
-            @Override
+            //@Override
             public void onComplete(Bundle values) {}
 
-            @Override
+            //@Override
             public void onCancel() {}
 
-			@Override
+			//@Override
 			public void onFacebookError(FacebookError e) {
 				// TODO Auto-generated method stub
 				
 			}
 
-			@Override
+			//@Override
 			public void onError(DialogError e) {
 				// TODO Auto-generated method stub
 				

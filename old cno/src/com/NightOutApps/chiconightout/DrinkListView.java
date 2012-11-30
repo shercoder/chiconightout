@@ -55,7 +55,7 @@ public class DrinkListView extends ListActivity implements OnClickListener{
  	   }
 
 	
-	@Override
+	//@Override
 	public void onClick(View v) {
 		switch(v.getId()) {
 		

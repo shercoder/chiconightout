@@ -1,0 +1,1 @@
+Hey these are the required libraries. In Eclipse go to new project from existing source and select the required libraries folder. Dont forget to select Copy project into workspace. There are 2 required libs. One for google maps and nested fragments and one for Facebook. After creating these projects in eclipse you can include them under project properties. 

@@ -1,0 +1,22 @@
+<resources>
+
+    <string name="app_name">ChicoNightOut</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_bar_list_view">BarListView</string>
+	<string name="bar_icon">The Icon That matches the bar name</string>
+	<string name="drinkList">DrinkListView</string>
+	<string name="barList">BarListView</string>
+	<string name="bacButton">Bac Button</string>
+	<string name="description">BarListViewbutton</string>
+	
+    <string name="title_activity_main">MainActivity</string>
+    <string-array name="items">
+    <item name="beer_12">Beer 12 oz</item>
+    <item name="beer_16">Beer 16 oz</item>    
+    <item name="beer_24">Beer 24 oz</item>
+    <item name="glass_wine">Glass of Wine</item>    
+    <item name="shot_vodka">Shot with Vodka</item>         
+    </string-array>
+    
+</resources>
