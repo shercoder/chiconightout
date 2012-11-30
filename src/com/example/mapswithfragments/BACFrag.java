@@ -19,7 +19,7 @@ import com.actionbarsherlock.internal.widget.IcsAdapterView;
 import com.actionbarsherlock.internal.widget.IcsAdapterView.OnItemSelectedListener;
 
 public class BACFrag extends SherlockFragment {
-	public static final String TAG = "mapFragment";
+	public static final String TAG = "bacfrag";
 
 	public String str = null;
 	private View result;

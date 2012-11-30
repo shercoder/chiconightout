@@ -17,6 +17,6 @@
             android:layout_toRightOf = "@id/baricon"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:textSize="20dp" />
+            android:textSize="20sp" />
  
 </RelativeLayout>
