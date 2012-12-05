@@ -14,7 +14,7 @@ public class ListPagerFrag extends SherlockFragmentActivity {
 
 		if (getSupportFragmentManager().findFragmentByTag(MyListFragment.TAG) == null) {
 		    getSupportFragmentManager().beginTransaction()
-			    .add(android.R.id.content, MyListFragment.newInstance(savedInstanceState), MyListFragment.TAG).commit();
+			    .add(android.R.id.content, MyListFragment.newInstance(0), MyListFragment.TAG).commit();
 		}
 	    }
 	

@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
@@ -22,7 +23,7 @@ public class MapFrags extends SherlockFragmentActivity {
 	private BACFrag bacFrag;
 	private View mapViewContainer;
 	private Facebook facebook = null;
-
+	private String bName = null;
 	// We use this fragment as a pointer to the visible one, so we can hide it
 	// easily.
 	private Fragment mVisible = null;
@@ -47,6 +48,18 @@ public class MapFrags extends SherlockFragmentActivity {
 
 	public View getMapContainer() {
 		return mapViewContainer;
+	}
+
+	public void setListData(String barName) {
+		Toast.makeText(this, barName, Toast.LENGTH_LONG).show();
+		bName = barName;
+		Toast.makeText(this, bName, Toast.LENGTH_LONG).show();
+		showFragment(1);
+	}
+
+	public String getBarSelected() {
+		Toast.makeText(this, bName, Toast.LENGTH_LONG).show();
+		return bName;
 	}
 
 	/**
@@ -79,14 +92,6 @@ public class MapFrags extends SherlockFragmentActivity {
 		}
 		ft.hide(mMapFragment);
 
-		mListFragment = (ListFragmentDisplay) getSupportFragmentManager()
-				.findFragmentByTag(ListFragmentDisplay.TAG);
-		if (mListFragment == null) {
-			mListFragment = new ListFragmentDisplay();
-			ft.add(R.id.fragment_container, mListFragment,
-					ListFragmentDisplay.TAG);
-		}
-		ft.hide(mListFragment);
 		myBarListFragment = (BarListFrag) getSupportFragmentManager()
 				.findFragmentByTag(BarListFrag.TAG);
 		if (myBarListFragment == null) {
@@ -119,14 +124,30 @@ public class MapFrags extends SherlockFragmentActivity {
 		final FragmentTransaction ft = getSupportFragmentManager()
 				.beginTransaction();
 		ft.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
-		if (mVisible != null)
-			ft.hide(mVisible);
+		if (mVisible != null) {
+			if (mVisible == mListFragment) {
+				Toast.makeText(this, "detatch list", Toast.LENGTH_LONG).show();
+				//ft.detach(mListFragment);
+				ft.remove(mListFragment);
+			} else {
+				ft.hide(mVisible);
+			} 
+		}
 		switch (fragIn) {
 		case 0:
-			ft.show(mMapFragment).commit();
+			ft.show(mMapFragment);
+			ft.commit();
 			mVisible = mMapFragment;
 			break;
 		case 1:
+			mListFragment = (ListFragmentDisplay) getSupportFragmentManager()
+					.findFragmentByTag(ListFragmentDisplay.TAG);
+			Toast.makeText(this, "startListFrag", Toast.LENGTH_LONG).show();
+			if (mListFragment == null) {
+				mListFragment = new ListFragmentDisplay();
+				ft.add(R.id.fragment_container, mListFragment,
+						ListFragmentDisplay.TAG);
+			}
 			ft.show(mListFragment).commit();
 			mVisible = mListFragment;
 			break;
@@ -140,10 +161,10 @@ public class MapFrags extends SherlockFragmentActivity {
 			break;
 		}
 	}
-	
+
 	public void facebookInit() {
 		facebook = new Facebook("281094275327241");
-		
+
 		AsyncFacebookRunner mAsyncRunner = new AsyncFacebookRunner(facebook);
 	}
 
@@ -175,6 +196,5 @@ public class MapFrags extends SherlockFragmentActivity {
 
 		return super.onOptionsItemSelected(item);
 	}
-	
-	
+
 }

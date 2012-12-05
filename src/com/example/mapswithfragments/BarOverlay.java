@@ -1,29 +1,29 @@
 package com.example.mapswithfragments;
 
 import java.util.ArrayList;
+
+import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.graphics.drawable.Drawable;
-
+import android.os.AsyncTask;
+import android.os.Build;
+import android.support.v4.app.FragmentTransaction;
 
 import com.google.android.maps.ItemizedOverlay;
-import com.google.android.maps.OverlayItem;
 
 public class BarOverlay extends ItemizedOverlay<BarItem> {
 	
 	private ArrayList<BarItem> bOverlay = new ArrayList<BarItem>();
 	private Context contx;
-	private int dayOfWeek;
-	
-	public BarOverlay(Drawable defaultMarker, Context cont, int doW) {
+	private MapFrags mFrag;
+	private String mName;
+	public BarOverlay(Drawable defaultMarker, Context cont, MapFrags frag) {
 		super(boundCenterBottom(defaultMarker));
 		contx = cont;
-		dayOfWeek = doW;
-		
+		mFrag = frag;
 	}
-	
 	@Override
 	protected BarItem createItem(int i) {
 		return bOverlay.get(i);
@@ -44,23 +44,8 @@ public class BarOverlay extends ItemizedOverlay<BarItem> {
 	@Override
 	protected boolean onTap(final int index) {
 		BarItem item = bOverlay.get(index);
-		Drawable tempDraw = item.getMarker(0);
-		AlertDialog.Builder dialog = new AlertDialog.Builder(contx);
-		dialog.setTitle(item.getTitle());
-		dialog.setMessage(item.getSnippet());
-		dialog.setIcon(tempDraw);
-		dialog.setPositiveButton("Specials and Events", new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dia, int id){
-				/*Intent drinkList = new Intent(contx, DrinkListView.class);
-				drinkList.putExtra("_bar", index+1);
-				drinkList.putExtra("_day", dayOfWeek);
-				//drinkList.putExtra("_day", dayOfWeek);
-				contx.startActivity(drinkList);*/	
-			}
-		});
-		dialog.show();
-		
-		
+		mName = item.getTitle();
+		mFrag.setListData(mName);
 		return true;
 	}
 }

@@ -37,9 +37,7 @@ public class MapFragment extends SherlockFragment implements OnClickListener {
 	private Facebook facebook;
 	private LoadOverlaysTask ovTsk = null;
 	private static final GeoPoint centerP = new GeoPoint(39728478, -121842176);
-
-	Calendar calendar = Calendar.getInstance();
-	int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
+	private String selected = null;
 
 	public static MapFragment newInstance(int index) {
 		MapFragment mf = new MapFragment();
@@ -58,7 +56,6 @@ public class MapFragment extends SherlockFragment implements OnClickListener {
 		// stuff.
 
 		initMapView();
-		deliverModel();
 		setRetainInstance(true);
 		setHasOptionsMenu(true);
 		return mapViewContainer;
@@ -116,6 +113,7 @@ public class MapFragment extends SherlockFragment implements OnClickListener {
 				}
 			});
 		}
+		deliverModel(mapActivity);
 	}
 
 	// not sure if i need this yet -->
@@ -206,13 +204,12 @@ public class MapFragment extends SherlockFragment implements OnClickListener {
 		facebook.authorizeCallback(requestCode, resultCode, data);
 	}
 
-	synchronized private void deliverModel() {
-		
-				initMyLocation();
-				ovTsk = new LoadOverlaysTask();
-				executeAsyncTask(ovTsk, getSherlockActivity()
-						.getApplicationContext());
-			}
+	synchronized private void deliverModel(MapFrags frag) {
+
+		initMyLocation();
+		ovTsk = new LoadOverlaysTask(frag);
+		executeAsyncTask(ovTsk, getSherlockActivity().getApplicationContext());
+	}
 
 	private void initMyLocation() {
 
@@ -227,6 +224,9 @@ public class MapFragment extends SherlockFragment implements OnClickListener {
 		});
 		mapView.getOverlays().add(overlay);
 	}
+	public void setItemClick(String itemClicked) {
+		selected = itemClicked;
+	}
 
 	@TargetApi(11)
 	static public <T> void executeAsyncTask(AsyncTask<T, ?, ?> task,
@@ -240,6 +240,10 @@ public class MapFragment extends SherlockFragment implements OnClickListener {
 
 	private class LoadOverlaysTask extends AsyncTask<Context, Void, Void> {
 		BarOverlay barsOverlay;
+		private MapFrags mFrag;
+		public LoadOverlaysTask(MapFrags frag) {
+			mFrag = frag;
+		}
 
 		@Override
 		protected Void doInBackground(Context... ctxt) {
@@ -339,9 +343,9 @@ public class MapFragment extends SherlockFragment implements OnClickListener {
 					-ubarIcon.getIntrinsicHeight(),
 					ubarIcon.getIntrinsicWidth() / 2, 0);
 
-			BarItem overlaybanshee = new BarItem(bansheePoint, "Banshee",
+			BarItem overlaybanshee = new BarItem(bansheePoint, "banshee",
 					"I'm at Banshee!", bansheeIcon, bansheeR);
-			BarItem overlaybeach = new BarItem(beachPoint, "Beach",
+			BarItem overlaybeach = new BarItem(beachPoint, "beach",
 					"I'm at The Beach!", beachIcon, beachR);
 			BarItem overlaybellas = new BarItem(bellasPoint, "Bellas",
 					"I'm at Bellas", bellasIcon, bellasR);
@@ -372,8 +376,7 @@ public class MapFragment extends SherlockFragment implements OnClickListener {
 			BarItem overlayubar = new BarItem(ubarPoint, "University Bar",
 					"I'm at the U-Bar!", ubarIcon, ubarR);
 
-			barsOverlay = new BarOverlay(cnoIco, getSherlockActivity(),
-					dayOfWeek);
+			barsOverlay = new BarOverlay(cnoIco, getSherlockActivity(), mFrag);
 			barsOverlay.addOverlay(overlaybanshee);
 			barsOverlay.addOverlay(overlaybeach);
 			barsOverlay.addOverlay(overlaybellas);

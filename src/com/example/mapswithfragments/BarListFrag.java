@@ -42,7 +42,8 @@ public class BarListFrag extends SherlockListFragment {
 			Bundle savedInstanceState) {
 		setRetainInstance(true);
 		setHasOptionsMenu(true);
-		View result = inflate.inflate(R.layout.activity_bar_list_view, container, false);
+		View result = inflate.inflate(R.layout.activity_bar_list_view,
+				container, false);
 
 		// Each row stores Bar name, Bar Icon
 		List<HashMap<String, String>> barList = new ArrayList<HashMap<String, String>>();
@@ -64,23 +65,12 @@ public class BarListFrag extends SherlockListFragment {
 		// setting up the list view that and defining the layout of that list.
 		// Creating an adapter to store each row item
 		// R.layout.row.xml defines the layout of each entry in the list
-		SimpleAdapter adapter = new SimpleAdapter(getSherlockActivity(), barList,
-				R.layout.row, bname, bicon);
-
-		
+		SimpleAdapter adapter = new SimpleAdapter(getSherlockActivity(),
+				barList, R.layout.row, bname, bicon);
 
 		// binding the adapter to the list view.
 		setListAdapter(adapter);
 
-		// binding the onclicklistenter to the list view.
-		/*barListView.setOnItemClickListener(new ListView.OnItemClickListener() {
-
-			public void onItemClick(AdapterView<?> arg0, View arg1,
-					int position, long arg3) {
-
-				
-			}
-		});*/
 		return result;
 
 	}
