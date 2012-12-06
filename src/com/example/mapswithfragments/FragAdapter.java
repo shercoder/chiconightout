@@ -36,3 +36,25 @@ public class FragAdapter extends FragmentPagerAdapter {
    }
 
 }
+
+/* public Fragment getItem(int position) {
+  Integer key = new Integer(position);
+  if(fragments.containsKey(key)) {
+   return fragments.get(key);
+  }
+
+  PojoGroup group = pojoGroups.get(position);
+  PojoFrag frag = new PojoFrag(group);
+  fragments.put(key, frag);
+  return frag;
+ }
+
+ public int getCount() {
+  return (null == pojoGroups) ? 0 : pojoGroups.size();
+ }
+
+ public int getItemPosition(Object object) {
+  if(!fragments.containsKey(object)) 
+   return POSITION_NONE;
+  return POSITION_UNCHANGED;
+ }*/

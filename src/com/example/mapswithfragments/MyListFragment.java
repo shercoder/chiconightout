@@ -39,8 +39,6 @@ public class MyListFragment extends SherlockListFragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		upDateList();
-
 	}
 
 	@Override
@@ -55,7 +53,9 @@ public class MyListFragment extends SherlockListFragment {
 				false);
 		SimpleAdapter adapter = new SimpleAdapter(getParentFragment()
 				.getActivity(), dList, R.layout.listrow, dFrom, dTo);
+		adapter.notifyDataSetChanged();
 		setListAdapter(adapter);
+		
 		return results;
 
 	}

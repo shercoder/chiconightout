@@ -20,6 +20,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.text.format.Time;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,15 +47,18 @@ public class ListFragmentDisplay extends SherlockFragment {
 
 	Calendar calendar = Calendar.getInstance();
 	private int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
+
 	// listbyday is a list of hash maps each list of hash maps represents a day
 	// of the week for the bar that was clicked on.
 	private ArrayList<ArrayList<HashMap<String, String>>> listByDay = null;
 	private String barName = null;
 	public ArrayList<HashMap<String, String>> eventList = null;
+	private ViewPager pager;
+	private FragAdapter adapter;
 
 	public ArrayList<HashMap<String, String>> getList(int day) {
-			return listByDay.get(day);
-	
+		return listByDay.get(day);
+
 	}
 
 	private void getBarName() {
@@ -84,10 +88,24 @@ public class ListFragmentDisplay extends SherlockFragment {
 	@Override
 	public void onViewCreated(View view, Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
-		ViewPager mViewPager = (ViewPager) view.findViewById(R.id.viewPager);
-		if (mViewPager.getAdapter() == null)
-			mViewPager.setAdapter(new FragAdapter(getChildFragmentManager()));
-		mViewPager.setCurrentItem(dayOfWeek);
+		pager = (ViewPager) view.findViewById(R.id.viewPager);
+		adapter =new FragAdapter(getChildFragmentManager());
+		if (pager.getAdapter() == null)
+			pager.setAdapter(adapter);
+		reload();
+		pager.setOnPageChangeListener(new OnPageChangeListener() {
+	        @Override
+	        public void onPageScrollStateChanged(int arg0) {}
+
+	        @Override
+	        public void onPageScrolled(int arg0, float arg1, int arg2) {reload();}
+	        
+	        @Override
+	        public void onPageSelected(int arg0) {
+	           
+	        }
+	    });
+		pager.setCurrentItem(dayOfWeek-1);
 	}
 
 	private void initArrList() {
@@ -102,10 +120,14 @@ public class ListFragmentDisplay extends SherlockFragment {
 
 		}
 	}
-
+	
 	synchronized private void fillList() {
 		LoadWebTask lWT = new LoadWebTask();
 		executeAsyncTask(lWT, getSherlockActivity().getApplicationContext());
+	}
+	
+	private void reload() {
+	    pager.invalidate();
 	}
 
 	@TargetApi(11)
