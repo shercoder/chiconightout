@@ -51,7 +51,9 @@ public class MapFragment extends SherlockFragment implements OnClickListener {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup vg, Bundle data) {
-		super.onCreateView(inflater, vg, data);
+		//super.onCreateView(inflater, vg, data);
+		if (vg == null)
+	        return null;
 		// The Activity created the MapView for us, so we can do some init
 		// stuff.
 

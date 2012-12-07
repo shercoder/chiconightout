@@ -14,25 +14,27 @@ import com.actionbarsherlock.app.SherlockListFragment;
 public class MyListFragment extends SherlockListFragment {
 	public static final String NAME_TAG = "name";
 	public static final String DESCRIPTION_TAG = "description";
-	private static int dow;
 	public static final String TAG = "listFragment";
 	// Keys used in Hashmap that will be mapped to the rows
 	String[] dFrom = { NAME_TAG, DESCRIPTION_TAG };
 	private ArrayList<HashMap<String, String>> dList;
 	int[] dTo = { R.id.drink_name, R.id.d_description };
+	SimpleAdapter adapter = null;
 
 	public void upDateList() {
 		ListFragmentDisplay lFD = (ListFragmentDisplay) this
 				.getParentFragment();
-			dList = lFD.getList(dow);
-			
+		dList = lFD.getList(getArguments().getInt(TAG));
+		if(adapter != null)
+		adapter.notifyDataSetChanged();
+
 	}
 
 	public static MyListFragment newInstance(int pos) {
 		MyListFragment frag = new MyListFragment();
-		// Bundle args = new Bundle();
-		// args.putInt(TAG, arg0);
-		dow = pos;
+		Bundle args = new Bundle();
+		args.putInt(TAG, pos);
+		frag.setArguments(args);
 		return (frag);
 	}
 
@@ -51,11 +53,12 @@ public class MyListFragment extends SherlockListFragment {
 		upDateList();
 		View results = inflater.inflate(R.layout.list_fragment, container,
 				false);
-		SimpleAdapter adapter = new SimpleAdapter(getParentFragment()
-				.getActivity(), dList, R.layout.listrow, dFrom, dTo);
-		adapter.notifyDataSetChanged();
+		adapter = new SimpleAdapter(getParentFragment().getActivity(), dList,
+				R.layout.listrow, dFrom, dTo);
+		upDateList();
 		setListAdapter(adapter);
 		
+
 		return results;
 
 	}

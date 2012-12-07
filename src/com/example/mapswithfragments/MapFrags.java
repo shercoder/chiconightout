@@ -33,7 +33,6 @@ public class MapFrags extends SherlockFragmentActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_map_frags);
-
 		// We instantiate the MapView here, it’s really important!
 		mapViewContainer = LayoutInflater.from(this)
 				.inflate(R.layout.map, null);
@@ -51,14 +50,11 @@ public class MapFrags extends SherlockFragmentActivity {
 	}
 
 	public void setListData(String barName) {
-		Toast.makeText(this, barName, Toast.LENGTH_LONG).show();
 		bName = barName;
-		Toast.makeText(this, bName, Toast.LENGTH_LONG).show();
 		showFragment(1);
 	}
 
 	public String getBarSelected() {
-		Toast.makeText(this, bName, Toast.LENGTH_LONG).show();
 		return bName;
 	}
 
@@ -126,13 +122,12 @@ public class MapFrags extends SherlockFragmentActivity {
 		ft.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
 		if (mVisible != null) {
 			if (mVisible == mListFragment) {
-				Toast.makeText(this, "detatch list", Toast.LENGTH_LONG).show();
-				//ft.detach(mListFragment);
 				ft.remove(mListFragment);
 			} else {
 				ft.hide(mVisible);
 			} 
 		}
+		
 		switch (fragIn) {
 		case 0:
 			ft.show(mMapFragment);

@@ -1,4 +1,4 @@
-package com.example.mapswithfragments;
+/*package com.example.mapswithfragments;
 
 import android.os.Bundle;
 
@@ -18,4 +18,4 @@ public class ListPagerFrag extends SherlockFragmentActivity {
 		}
 	    }
 	
-}
+}*/
