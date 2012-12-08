@@ -11,14 +11,15 @@ import android.widget.SimpleAdapter;
 
 import com.actionbarsherlock.app.SherlockListFragment;
 
-public class MyListFragment extends SherlockListFragment {
+public class MyEventsListFrag extends SherlockListFragment {
 	public static final String NAME_TAG = "name";
 	public static final String DESCRIPTION_TAG = "description";
-	public static final String TAG = "listFragment";
+	public static final String TIME_TAG = "event_time";
+	public static final String TAG = "eventlistFragment";
 	// Keys used in Hashmap that will be mapped to the rows
-	String[] dFrom = { NAME_TAG, DESCRIPTION_TAG };
+	String[] dFrom = { NAME_TAG, DESCRIPTION_TAG, TIME_TAG };
 	private ArrayList<HashMap<String, String>> dList;
-	int[] dTo = { R.id.drink_name, R.id.d_description };
+	int[] dTo = { R.id.drink_name, R.id.d_description, R.id.time };
 	SimpleAdapter adapter = null;
 
 	public void upDateList() {
@@ -54,10 +55,13 @@ public class MyListFragment extends SherlockListFragment {
 		View results = inflater.inflate(R.layout.list_fragment, container,
 				false);
 		adapter = new SimpleAdapter(getParentFragment().getActivity(), dList,
-				R.layout.listrow, dFrom, dTo);
+				R.layout.eventrow, dFrom, dTo);
 		upDateList();
 		setListAdapter(adapter);
+		
+
 		return results;
+
 	}
 
 }

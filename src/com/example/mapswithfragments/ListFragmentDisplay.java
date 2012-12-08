@@ -19,7 +19,6 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.text.format.Time;
@@ -28,6 +27,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.actionbarsherlock.app.SherlockFragment;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuInflater;
 
 public class ListFragmentDisplay extends SherlockFragment {
 	public static final String TAG = "listFragmentDisplay";
@@ -45,6 +46,7 @@ public class ListFragmentDisplay extends SherlockFragment {
 	public static final String THURSDAY = "thursday";
 	public static final String FRIDAY = "friday";
 	public static final String SATURDAY = "saturday";
+	private LoadWebTask aTask = null;
 
 	Calendar calendar = Calendar.getInstance();
 	private int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
@@ -53,16 +55,20 @@ public class ListFragmentDisplay extends SherlockFragment {
 	// of the week for the bar that was clicked on.
 	private ArrayList<ArrayList<HashMap<String, String>>> listByDay = null;
 	private String barName = null;
-	public ArrayList<HashMap<String, String>> eventList = null;
+	private ArrayList<HashMap<String, String>> eventList = null;
 	private ViewPager pager = null;
 	private FragAdapter adapter = null;
 
 	public ArrayList<HashMap<String, String>> getList(int day) {
+		if(day == 7) {
+			return eventList;
+		} else {
 		return listByDay.get(day);
-
+		}
 	}
-
 	public void updatePager() {
+		if (adapter == null)
+			adapter = new FragAdapter(getChildFragmentManager());
 		adapter.notifyDataSetChanged();
 	}
 
@@ -87,16 +93,28 @@ public class ListFragmentDisplay extends SherlockFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		if (container == null)
-	        return null;
-		//setRetainInstance(true);
+			return null;
+		// setRetainInstance(true);
 		initArrList();
 		getBarName();
-		fillList();
+
+		if (aTask == null) {
+			aTask = new LoadWebTask();
+			executeAsyncTask(aTask, getSherlockActivity()
+					.getApplicationContext());
+		}
+		updatePager();
 		// Inflate the ListView layout file.
-
-		
-
+		setHasOptionsMenu(true);
 		return inflater.inflate(R.layout.list_view, container, false);
+	}
+
+	@Override
+	public void onCreateOptionsMenu(final Menu menu, final MenuInflater inflater) {
+		inflater.inflate(R.menu.menu, menu);
+		menu.getItem(0).setVisible(true);
+		super.onCreateOptionsMenu(menu, inflater);
+
 	}
 
 	@Override
@@ -117,18 +135,23 @@ public class ListFragmentDisplay extends SherlockFragment {
 
 			@Override
 			public void onPageSelected(int arg0) {
+
 			}
 		});
 		pager.setCurrentItem(dayOfWeek - 1);
+
 	}
-	
-	private void startFrag() {
-		
-	}
+
 	@Override
 	public void onResume() {
 		super.onResume();
-		startFrag();
+		initArrList();
+		getBarName();
+		if (aTask == null) {
+			aTask = new LoadWebTask();
+			executeAsyncTask(aTask, getSherlockActivity()
+					.getApplicationContext());
+		}
 	}
 
 	private void initArrList() {
@@ -140,13 +163,8 @@ public class ListFragmentDisplay extends SherlockFragment {
 		for (int i = 0; i < 7; i++) {
 			ArrayList<HashMap<String, String>> hm = new ArrayList<HashMap<String, String>>();
 			listByDay.add(hm);
-
 		}
-	}
-
-	synchronized private void fillList() {
-		LoadWebTask lWT = new LoadWebTask();
-		executeAsyncTask(lWT, getSherlockActivity().getApplicationContext());
+			eventList = new ArrayList<HashMap<String, String>>();
 	}
 
 	@TargetApi(11)
@@ -246,6 +264,7 @@ public class ListFragmentDisplay extends SherlockFragment {
 		@Override
 		public void onPostExecute(Void arg0) {
 			updatePager();
+			aTask = null;
 		}
 	}
 }

@@ -18,5 +18,13 @@
         android:layout_below="@id/drink_name"
         android:layout_centerHorizontal="true"
         android:textSize="15sp" />
+    
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/d_description"
+        android:layout_centerHorizontal="true"
+        android:textSize="15sp" />
  
 </RelativeLayout>

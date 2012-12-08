@@ -9,6 +9,7 @@
 	<string name="barList">BarListView</string>
 	<string name="bacButton">Bac Button</string>
 	<string name="description">BarListViewbutton</string>
+	<string name="event">Events</string>
 	
     <string name="title_activity_main">MainActivity</string>
     <string-array name="items">

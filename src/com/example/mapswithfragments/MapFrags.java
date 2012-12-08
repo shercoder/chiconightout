@@ -28,6 +28,7 @@ public class MapFrags extends SherlockFragmentActivity {
 	// easily.
 	private Fragment mVisible = null;
 	private Fragment mFragment1 = null;
+	private Menu mMenu = null;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -42,7 +43,7 @@ public class MapFrags extends SherlockFragmentActivity {
 		setupFragments();
 
 		// We manually show the first Fragment.
-		showFragment(0);
+		// showFragment(0);
 	}
 
 	public View getMapContainer() {
@@ -70,13 +71,13 @@ public class MapFrags extends SherlockFragmentActivity {
 
 		// this sets up a menu fragment that i will modify based on which
 		// fragment is active.
-		mFragment1 = fm.findFragmentByTag("f1");
-		if (mFragment1 == null) {
-			mFragment1 = new MenuFragment();
-			ft.add(mFragment1, "f1");
-			ft.hide(mFragment1);
-
-		}
+		/*
+		 * mFragment1 = fm.findFragmentByTag("f1"); if (mFragment1 == null) {
+		 * mFragment1 = new MenuFragment(); ft.add(mFragment1, "f1");
+		 * ft.hide(mFragment1);
+		 * 
+		 * }
+		 */
 		// If the activity is killed while in BG, it’s possible that the
 		// fragment still remains in the FragmentManager, so, we don’t need to
 		// add it again.
@@ -86,23 +87,23 @@ public class MapFrags extends SherlockFragmentActivity {
 			mMapFragment = MapFragment.newInstance(0);
 			ft.add(R.id.fragment_container, mMapFragment, MapFragment.TAG);
 		}
-		ft.hide(mMapFragment);
+		// ft.detach(mMapFragment);
 
-		myBarListFragment = (BarListFrag) getSupportFragmentManager()
-				.findFragmentByTag(BarListFrag.TAG);
-		if (myBarListFragment == null) {
-			myBarListFragment = new BarListFrag();
-			ft.add(R.id.fragment_container, myBarListFragment, BarListFrag.TAG);
-		}
-		ft.hide(myBarListFragment);
+		/*
+		 * myBarListFragment = (BarListFrag) getSupportFragmentManager()
+		 * .findFragmentByTag(BarListFrag.TAG); if (myBarListFragment == null) {
+		 * myBarListFragment = new BarListFrag(); //
+		 * ft.add(R.id.fragment_container, myBarListFragment, //
+		 * BarListFrag.TAG); }
+		 */
+		// ft.detach(myBarListFragment);
 
-		bacFrag = (BACFrag) getSupportFragmentManager().findFragmentByTag(
-				BACFrag.TAG);
-		if (bacFrag == null) {
-			bacFrag = new BACFrag();
-			ft.add(R.id.fragment_container, bacFrag, BACFrag.TAG);
-		}
-		ft.hide(bacFrag);
+		/*
+		 * bacFrag = (BACFrag) getSupportFragmentManager().findFragmentByTag(
+		 * BACFrag.TAG); if (bacFrag == null) { bacFrag = new BACFrag(); //
+		 * ft.add(R.id.fragment_container, bacFrag, BACFrag.TAG); }
+		 */
+		// ft.detach(bacFrag);
 		ft.commit();
 	}
 
@@ -120,18 +121,24 @@ public class MapFrags extends SherlockFragmentActivity {
 		final FragmentTransaction ft = getSupportFragmentManager()
 				.beginTransaction();
 		ft.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
-		if (mVisible != null) {
-			if (mVisible == mListFragment) {
-				ft.remove(mListFragment);
-			} else {
-				ft.hide(mVisible);
-			} 
-		}
-		
+		// if (mVisible != null) {
+		// ft.detach(mVisible);
+		/*
+		 * if (mVisible == mListFragment) { ft.remove(mListFragment); } else {
+		 * ft.hide(mVisible); }
+		 */
+		// }
+
 		switch (fragIn) {
 		case 0:
-			ft.show(mMapFragment);
-			ft.commit();
+			mMapFragment = (MapFragment) getSupportFragmentManager()
+					.findFragmentByTag(MapFragment.TAG);
+			if (mMapFragment == null) {
+				mMapFragment = MapFragment.newInstance(0);
+			}
+			ft.replace(R.id.fragment_container, mMapFragment, MapFragment.TAG)
+					.addToBackStack(null).commit();
+
 			mVisible = mMapFragment;
 			break;
 		case 1:
@@ -140,18 +147,35 @@ public class MapFrags extends SherlockFragmentActivity {
 			Toast.makeText(this, "startListFrag", Toast.LENGTH_LONG).show();
 			if (mListFragment == null) {
 				mListFragment = new ListFragmentDisplay();
-				ft.add(R.id.fragment_container, mListFragment,
-						ListFragmentDisplay.TAG);
 			}
-			ft.show(mListFragment).commit();
+			// ft.attach(mListFragment).commit();
+
+			ft.replace(R.id.fragment_container, mListFragment,
+					ListFragmentDisplay.TAG).addToBackStack(null).commit();
+			mMenu.getItem(0).setVisible(true);
 			mVisible = mListFragment;
 			break;
 		case 2:
-			ft.show(myBarListFragment).commit();
+			myBarListFragment = (BarListFrag) getSupportFragmentManager()
+					.findFragmentByTag(BarListFrag.TAG);
+			if (myBarListFragment == null) {
+				myBarListFragment = new BarListFrag();
+			}
+			ft.replace(R.id.fragment_container, myBarListFragment,
+					BarListFrag.TAG).addToBackStack(null).commit();
+			;
 			mVisible = myBarListFragment;
+
 			break;
 		case 3:
-			ft.show(bacFrag).commit();
+			bacFrag = (BACFrag) getSupportFragmentManager().findFragmentByTag(
+					BACFrag.TAG);
+			if (bacFrag == null) {
+				bacFrag = new BACFrag();
+			}
+			ft.replace(R.id.fragment_container, bacFrag, BACFrag.TAG)
+					.addToBackStack(null).commit();
+			;
 			mVisible = bacFrag;
 			break;
 		}
@@ -167,24 +191,22 @@ public class MapFrags extends SherlockFragmentActivity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu with the options to show the Map and the ListView.
 		getSupportMenuInflater().inflate(R.menu.menu, menu);
+		mMenu = menu;
 		return true;
 	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+
 		switch (item.getItemId()) {
 		case R.id.ic_list:
-			// Show mMyListFragment.
-			ft.hide(mFragment1);
-			ft.commit();
-			showFragment(1);
+			mMenu.getItem(0).setVisible(false);
+			showFragment(2);
 			return true;
 
 		case R.id.ic_map:
 			// Show mMapFragment.
-			ft.show(mFragment1);
-			ft.commit();
+			mMenu.getItem(0).setVisible(false);
 			showFragment(0);
 			return true;
 		}

@@ -218,12 +218,13 @@ public class MapFragment extends SherlockFragment implements OnClickListener {
 		final MyLocationOverlay overlay = new MyLocationOverlay(
 				getSherlockActivity(), mapView);
 		overlay.enableMyLocation();
-		overlay.runOnFirstFix(new Runnable() {
-			public void run() {
-				control.setZoom(18);
-				control.setCenter(centerP);
-			}
-		});
+		control.setZoom(18);
+		control.setCenter(centerP);
+		//overlay.runOnFirstFix(new Runnable() {
+		//	public void run() {
+		//		
+		//	}
+	//});
 		mapView.getOverlays().add(overlay);
 	}
 	public void setItemClick(String itemClicked) {
@@ -349,33 +350,33 @@ public class MapFragment extends SherlockFragment implements OnClickListener {
 					"I'm at Banshee!", bansheeIcon, bansheeR);
 			BarItem overlaybeach = new BarItem(beachPoint, "beach",
 					"I'm at The Beach!", beachIcon, beachR);
-			BarItem overlaybellas = new BarItem(bellasPoint, "Bellas",
+			BarItem overlaybellas = new BarItem(bellasPoint, "bellas",
 					"I'm at Bellas", bellasIcon, bellasR);
-			BarItem overlaycrazy = new BarItem(crazyPoint, "Crazy Horse",
+			BarItem overlaycrazy = new BarItem(crazyPoint, "crazyhorse",
 					"I'm at The Crazy Horse!", crazyIcon, crazyR);
-			BarItem overlaydown = new BarItem(downPoint, "Down Lo",
+			BarItem overlaydown = new BarItem(downPoint, "downlo",
 					"I'm at the DownLo!", downIcon, downR);
-			BarItem overlayduffys = new BarItem(duffysPoint, "Duffys",
+			BarItem overlayduffys = new BarItem(duffysPoint, "duffys",
 					"I'm at Duffy's!", duffysIcon, duffysR);
-			BarItem overlayjoes = new BarItem(joesPoint, "Joes",
+			BarItem overlayjoes = new BarItem(joesPoint, "joes",
 					"I'm at Joe's!", joesIcon, joesR);
-			BarItem overlaylasalles = new BarItem(lasallesPoint, "Lasalles",
+			BarItem overlaylasalles = new BarItem(lasallesPoint, "lasalles",
 					"I'm at Lasalles!", lasallesIcon, lasallesR);
-			BarItem overlaylost = new BarItem(lostPoint, "Lost On Main",
+			BarItem overlaylost = new BarItem(lostPoint, "lost",
 					"I'm at Lost On Main!", lostIcon, lostR);
-			BarItem overlaybear = new BarItem(bearPoint, "Madison Bear Garden",
+			BarItem overlaybear = new BarItem(bearPoint, "madisonbeargarden",
 					"I'm at The Bear", bearIcon, bearR);
-			BarItem overlaymaltese = new BarItem(maltesePoint, "Maltese",
+			BarItem overlaymaltese = new BarItem(maltesePoint, "maltese",
 					"I'm at the Maltese!", malteseIcon, malteseR);
-			BarItem overlaypanamas = new BarItem(panamasPoint, "Panamas",
+			BarItem overlaypanamas = new BarItem(panamasPoint, "panamas",
 					"I'm at Panamas!", panamasIcon, panamasR);
-			BarItem overlayrileys = new BarItem(rileysPoint, "Rileys",
+			BarItem overlayrileys = new BarItem(rileysPoint, "rileys",
 					"I'm at Rileys!", rileysIcon, rileysR);
-			BarItem overlaygrad = new BarItem(gradPoint, "The Grad",
+			BarItem overlaygrad = new BarItem(gradPoint, "thegrad",
 					"I'm at The Graduate!", gradIcon, gradR);
-			BarItem overlaytown = new BarItem(townPoint, "Town Lounge",
+			BarItem overlaytown = new BarItem(townPoint, "townlounge",
 					"I'm at Town Lounge!", townIcon, townR);
-			BarItem overlayubar = new BarItem(ubarPoint, "University Bar",
+			BarItem overlayubar = new BarItem(ubarPoint, "ubar",
 					"I'm at the U-Bar!", ubarIcon, ubarR);
 
 			barsOverlay = new BarOverlay(cnoIco, getSherlockActivity(), mFrag);
