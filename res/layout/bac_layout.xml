@@ -158,9 +158,8 @@
 			    android:text="BAC" 
 			    android:id="@+id/calculate" 
 			    android:textAppearance="?android:attr/textAppearanceLarge" 
-			    android:layout_gravity="center_vertical" 
-			    android:onClick="clickCalculate"/>    
-			<requestFocus/> 
+			    android:layout_gravity="center_vertical" />
+				<requestFocus/> 
 		</LinearLayout>
 		<requestFocus/> 
 	</LinearLayout>

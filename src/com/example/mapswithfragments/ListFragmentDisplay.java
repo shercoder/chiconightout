@@ -29,6 +29,7 @@ import android.view.ViewGroup;
 import com.actionbarsherlock.app.SherlockFragment;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
+import com.actionbarsherlock.view.MenuItem;
 
 public class ListFragmentDisplay extends SherlockFragment {
 	public static final String TAG = "listFragmentDisplay";
@@ -47,6 +48,7 @@ public class ListFragmentDisplay extends SherlockFragment {
 	public static final String FRIDAY = "friday";
 	public static final String SATURDAY = "saturday";
 	private LoadWebTask aTask = null;
+	private Menu mMenu = null;
 
 	Calendar calendar = Calendar.getInstance();
 	private int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
@@ -60,12 +62,13 @@ public class ListFragmentDisplay extends SherlockFragment {
 	private FragAdapter adapter = null;
 
 	public ArrayList<HashMap<String, String>> getList(int day) {
-		if(day == 7) {
+		if (day == 7) {
 			return eventList;
 		} else {
-		return listByDay.get(day);
+			return listByDay.get(day);
 		}
 	}
+
 	public void updatePager() {
 		if (adapter == null)
 			adapter = new FragAdapter(getChildFragmentManager());
@@ -111,10 +114,27 @@ public class ListFragmentDisplay extends SherlockFragment {
 
 	@Override
 	public void onCreateOptionsMenu(final Menu menu, final MenuInflater inflater) {
-		inflater.inflate(R.menu.menu, menu);
+		mMenu = menu;
 		menu.getItem(0).setVisible(true);
 		super.onCreateOptionsMenu(menu, inflater);
 
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case R.id.events:
+			pager.setCurrentItem(7);
+			return true;
+
+			/*
+			 * case R.id.ic_map: // Show mMapFragment.
+			 * mMenu.getItem(0).setVisible(false); ((MapFrags)
+			 * getSherlockActivity()).showFragment(0); return true;
+			 */
+		}
+
+		return super.onOptionsItemSelected(item);
 	}
 
 	@Override
@@ -152,6 +172,7 @@ public class ListFragmentDisplay extends SherlockFragment {
 			executeAsyncTask(aTask, getSherlockActivity()
 					.getApplicationContext());
 		}
+		pager.setCurrentItem(dayOfWeek - 1);
 	}
 
 	private void initArrList() {
@@ -164,7 +185,7 @@ public class ListFragmentDisplay extends SherlockFragment {
 			ArrayList<HashMap<String, String>> hm = new ArrayList<HashMap<String, String>>();
 			listByDay.add(hm);
 		}
-			eventList = new ArrayList<HashMap<String, String>>();
+		eventList = new ArrayList<HashMap<String, String>>();
 	}
 
 	@TargetApi(11)
@@ -228,23 +249,27 @@ public class ListFragmentDisplay extends SherlockFragment {
 						}
 
 					}
+					if (eventList == null) {
+						eventList = new ArrayList<HashMap<String, String>>();
+					}
 					for (int i = 0; i < mEvents.length(); i++) {
 						JSONObject d = mEvents.getJSONObject(i);
-						Time time = new Time();
 						String eTime = d.getString(TIME_TAG);
+						
+						//This is a hack to make our event time show up correctly. In later versions this should be converted to a time object. 
+						if (eTime.charAt(11) == '0')
+							eTime = eTime.substring(12, 16);
+						else
+							eTime = eTime.substring(11, 16);
+						//****************************************
 						String eDescription = d.getString(DESCRIPTION_TAG);
 						String eDate = d.getString(DATE_TAG);
-						Boolean mTime = time.parse3339(eTime);
-						if (mTime == true) {
-							eTime = time.toString();
-						}
+						
 						HashMap<String, String> eventMap = new HashMap<String, String>();
 						eventMap.put(DATE_TAG, eDate);
 						eventMap.put(DESCRIPTION_TAG, eDescription);
 						eventMap.put(TIME_TAG, eTime);
-						if (eventList == null) {
-							eventList = new ArrayList<HashMap<String, String>>();
-						}
+
 						eventList.add(eventMap);
 					}
 				}

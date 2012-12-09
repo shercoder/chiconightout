@@ -82,6 +82,7 @@ public class MapFragment extends SherlockFragment implements OnClickListener {
 		MapFrags mapActivity = (MapFrags) getActivity();
 		mapViewContainer = mapActivity.getMapContainer();
 		mapView = Exchanger.mMapView;
+		
 		View bacButton = mapViewContainer.findViewById(R.id.bacbutton);
 		bacButton.setOnClickListener(this);
 

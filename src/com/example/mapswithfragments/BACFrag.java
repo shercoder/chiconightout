@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -36,7 +37,14 @@ public class BACFrag extends SherlockFragment {
 		setRetainInstance(true);
 		setHasOptionsMenu(true);
 		result = inflate.inflate(R.layout.bac_layout, container, false);
-
+		View calculate = result.findViewById(R.id.calculate);
+		calculate.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				clickCalculate(v);
+			}
+			
+		});
+		
 		Spinner sp = (Spinner) result.findViewById(R.id.spinner1);
 
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(

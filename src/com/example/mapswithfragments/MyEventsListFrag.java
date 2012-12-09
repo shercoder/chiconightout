@@ -12,31 +12,31 @@ import android.widget.SimpleAdapter;
 import com.actionbarsherlock.app.SherlockListFragment;
 
 public class MyEventsListFrag extends SherlockListFragment {
-	public static final String NAME_TAG = "name";
+	public static final String DATE_TAG = "event_date";
 	public static final String DESCRIPTION_TAG = "description";
 	public static final String TIME_TAG = "event_time";
 	public static final String TAG = "eventlistFragment";
 	// Keys used in Hashmap that will be mapped to the rows
-	String[] dFrom = { NAME_TAG, DESCRIPTION_TAG, TIME_TAG };
-	private ArrayList<HashMap<String, String>> dList;
-	int[] dTo = { R.id.drink_name, R.id.d_description, R.id.time };
+	String[] dFrom = { DESCRIPTION_TAG, DATE_TAG, TIME_TAG };
+	private ArrayList<HashMap<String, String>> eList;
+	int[] dTo = { R.id.e_description, R.id.e_date, R.id.time };
 	SimpleAdapter adapter = null;
 
 	public void upDateList() {
 		ListFragmentDisplay lFD = (ListFragmentDisplay) this
 				.getParentFragment();
-		dList = lFD.getList(getArguments().getInt(TAG));
+		eList = lFD.getList(getArguments().getInt(TAG));
 		if(adapter != null)
 		adapter.notifyDataSetChanged();
 
 	}
 
-	public static MyListFragment newInstance(int pos) {
-		MyListFragment frag = new MyListFragment();
+	public static MyEventsListFrag newInstance(int pos) {
+		MyEventsListFrag mfrag = new MyEventsListFrag();
 		Bundle args = new Bundle();
 		args.putInt(TAG, pos);
-		frag.setArguments(args);
-		return (frag);
+		mfrag.setArguments(args);
+		return (mfrag);
 	}
 
 	@Override
@@ -54,7 +54,7 @@ public class MyEventsListFrag extends SherlockListFragment {
 		upDateList();
 		View results = inflater.inflate(R.layout.list_fragment, container,
 				false);
-		adapter = new SimpleAdapter(getParentFragment().getActivity(), dList,
+		adapter = new SimpleAdapter(getParentFragment().getActivity(), eList,
 				R.layout.eventrow, dFrom, dTo);
 		upDateList();
 		setListAdapter(adapter);

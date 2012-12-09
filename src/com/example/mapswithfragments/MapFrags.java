@@ -37,13 +37,11 @@ public class MapFrags extends SherlockFragmentActivity {
 		// We instantiate the MapView here, it’s really important!
 		mapViewContainer = LayoutInflater.from(this)
 				.inflate(R.layout.map, null);
+		//The exchanger ensures that there is only one mapactivity fragment used at a time. aM
 		Exchanger.mMapView = (MapView) mapViewContainer
 				.findViewById(R.id.mapview);
 
 		setupFragments();
-
-		// We manually show the first Fragment.
-		// showFragment(0);
 	}
 
 	public View getMapContainer() {
@@ -81,6 +79,7 @@ public class MapFrags extends SherlockFragmentActivity {
 		// If the activity is killed while in BG, it’s possible that the
 		// fragment still remains in the FragmentManager, so, we don’t need to
 		// add it again.
+		//We only add the map fragment at first. Everything else is added later. aM
 		mMapFragment = (MapFragment) getSupportFragmentManager()
 				.findFragmentByTag(MapFragment.TAG);
 		if (mMapFragment == null) {
@@ -104,16 +103,14 @@ public class MapFrags extends SherlockFragmentActivity {
 		 * ft.add(R.id.fragment_container, bacFrag, BACFrag.TAG); }
 		 */
 		// ft.detach(bacFrag);
+		//always commit at the end of a fragment transaction. 
 		ft.commit();
 	}
 
 	/**
-	 * This method shows the given Fragment and if there was another visible
-	 * fragment, it gets hidden. We can just do this because we know that both
-	 * the mMyListFragment and the mMapFragment were added in the Activity’s
-	 * onCreate, so we just create the fragments once at first and not every
-	 * time. This will avoid facing some problems with the MapView.
-	 * 
+	 * This method creates or replaces the given Fragment into view. If there was another visible
+	 * fragment, it gets added to the back stack and replaced with fragIn. 
+	 *
 	 * @param fragmentIn
 	 *            The fragment to show.
 	 */
@@ -131,6 +128,7 @@ public class MapFrags extends SherlockFragmentActivity {
 
 		switch (fragIn) {
 		case 0:
+			//check if the fragment exists and create it if it does not. 
 			mMapFragment = (MapFragment) getSupportFragmentManager()
 					.findFragmentByTag(MapFragment.TAG);
 			if (mMapFragment == null) {
