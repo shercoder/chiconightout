@@ -1,4 +1,4 @@
-package com.example.mapswithfragments;
+package com.NightoutApps.cno;
 
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;

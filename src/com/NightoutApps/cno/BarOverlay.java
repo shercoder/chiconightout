@@ -1,15 +1,9 @@
-package com.example.mapswithfragments;
+package com.NightoutApps.cno;
 
 import java.util.ArrayList;
 
-import android.annotation.TargetApi;
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
-import android.os.AsyncTask;
-import android.os.Build;
-import android.support.v4.app.FragmentTransaction;
 
 import com.google.android.maps.ItemizedOverlay;
 
@@ -41,11 +35,24 @@ public class BarOverlay extends ItemizedOverlay<BarItem> {
 		populate();
 	}
 	
+	
 	@Override
 	protected boolean onTap(final int index) {
+		
 		BarItem item = bOverlay.get(index);
 		mName = item.getTitle();
+		mFrag.getSupportActionBar().setIcon(item.getMarker(0));
+		mFrag.getSupportActionBar().setTitle(firstToUpper(mName));
+		
 		mFrag.setListData(mName);
+		
 		return true;
+	}
+	
+	private String firstToUpper(String string) {
+		char[] stringArray = string.toCharArray();
+		stringArray[0] = Character.toUpperCase(stringArray[0]);
+		string = new String(stringArray);
+		return string;
 	}
 }

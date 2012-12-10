@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.mapswithfragments"
+    package="com.NightoutApps.cno"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -20,7 +20,7 @@
         <uses-library android:name="com.google.android.maps" />
 
         <activity
-            android:name="com.example.mapswithfragments.MapFrags"
+            android:name="com.NightoutApps.cno.MapFrags"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/app_name" >
             <intent-filter>

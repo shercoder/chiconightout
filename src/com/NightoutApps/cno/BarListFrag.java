@@ -1,4 +1,4 @@
-package com.example.mapswithfragments;
+package com.NightoutApps.cno;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -13,8 +13,6 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
 import com.actionbarsherlock.app.SherlockListFragment;
-import com.google.android.maps.MapView;
-import com.google.android.maps.Overlay;
 
 public class BarListFrag extends SherlockListFragment {
 	public static final String TAG = "barlistfrag";

@@ -1,4 +1,4 @@
-package com.example.mapswithfragments;
+package com.NightoutApps.cno;
 
 import java.io.Serializable;
 import java.util.ArrayList;
