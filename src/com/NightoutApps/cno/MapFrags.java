@@ -1,4 +1,4 @@
-package com.example.mapswithfragments;
+package com.NightoutApps.cno;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -129,6 +129,8 @@ public class MapFrags extends SherlockFragmentActivity {
 		switch (fragIn) {
 		case 0:
 			//check if the fragment exists and create it if it does not. 
+			getSupportActionBar().setIcon(R.drawable.cno_icon);
+			getSupportActionBar().setTitle(R.string.app_name);
 			mMapFragment = (MapFragment) getSupportFragmentManager()
 					.findFragmentByTag(MapFragment.TAG);
 			if (mMapFragment == null) {

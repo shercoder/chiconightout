@@ -1,6 +1,4 @@
-package com.example.mapswithfragments;
-
-import java.util.Calendar;
+package com.NightoutApps.cno;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -51,13 +49,14 @@ public class MapFragment extends SherlockFragment implements OnClickListener {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup vg, Bundle data) {
-		//super.onCreateView(inflater, vg, data);
+		// super.onCreateView(inflater, vg, data);
 		if (vg == null)
-	        return null;
+			return null;
 		// The Activity created the MapView for us, so we can do some init
 		// stuff.
 
 		initMapView();
+		facebookInit();
 		setRetainInstance(true);
 		setHasOptionsMenu(true);
 		return mapViewContainer;
@@ -74,7 +73,6 @@ public class MapFragment extends SherlockFragment implements OnClickListener {
 	 */
 	public void facebookInit() {
 		facebook = new Facebook("281094275327241");
-
 		AsyncFacebookRunner mAsyncRunner = new AsyncFacebookRunner(facebook);
 	}
 
@@ -82,7 +80,7 @@ public class MapFragment extends SherlockFragment implements OnClickListener {
 		MapFrags mapActivity = (MapFrags) getActivity();
 		mapViewContainer = mapActivity.getMapContainer();
 		mapView = Exchanger.mMapView;
-		
+
 		View bacButton = mapViewContainer.findViewById(R.id.bacbutton);
 		bacButton.setOnClickListener(this);
 
@@ -171,6 +169,7 @@ public class MapFragment extends SherlockFragment implements OnClickListener {
 			cacButton = new CallACab(getSherlockActivity());
 			break;
 		case R.id.facebookbutton:
+			authorizeFacebook();
 			break;
 		}
 		// Show mMyListFragment.
@@ -221,13 +220,14 @@ public class MapFragment extends SherlockFragment implements OnClickListener {
 		overlay.enableMyLocation();
 		control.setZoom(18);
 		control.setCenter(centerP);
-		//overlay.runOnFirstFix(new Runnable() {
-		//	public void run() {
-		//		
-		//	}
-	//});
+		// overlay.runOnFirstFix(new Runnable() {
+		// public void run() {
+		//
+		// }
+		// });
 		mapView.getOverlays().add(overlay);
 	}
+
 	public void setItemClick(String itemClicked) {
 		selected = itemClicked;
 	}
@@ -245,6 +245,7 @@ public class MapFragment extends SherlockFragment implements OnClickListener {
 	private class LoadOverlaysTask extends AsyncTask<Context, Void, Void> {
 		BarOverlay barsOverlay;
 		private MapFrags mFrag;
+
 		public LoadOverlaysTask(MapFrags frag) {
 			mFrag = frag;
 		}

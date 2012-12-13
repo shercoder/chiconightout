@@ -1,4 +1,4 @@
-package com.example.mapswithfragments;
+package com.NightoutApps.cno;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

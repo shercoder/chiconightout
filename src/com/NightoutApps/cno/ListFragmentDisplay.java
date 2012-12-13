@@ -1,4 +1,4 @@
-package com.example.mapswithfragments;
+package com.NightoutApps.cno;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -21,7 +21,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.text.format.Time;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
