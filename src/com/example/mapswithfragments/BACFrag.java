@@ -218,7 +218,7 @@ public class BACFrag extends SherlockFragment {
 
 			}
 
-			else if (m.isChecked() && str.equals("Shot with Vodka")) {
+			else if (m.isChecked() && str.equals("Shot")) {
 
 				BAC = calculateBAC(.73, 0.5, weight, drinksConsumed,
 						hoursConsumed);
@@ -263,7 +263,7 @@ public class BACFrag extends SherlockFragment {
 
 			}
 
-			else if (f.isChecked() && str.equals("Shot with Vodka")) {
+			else if (f.isChecked() && str.equals("Shot")) {
 
 				BAC = calculateBAC(.66, 0.5, weight, drinksConsumed,
 						hoursConsumed);
